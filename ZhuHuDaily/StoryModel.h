@@ -11,6 +11,7 @@
 @interface StoryModel : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *imageUrl;
-@property (nonatomic, copy) NSString *Id;
+@property (nonatomic, retain) NSArray *images;
+@property (nonatomic, copy) NSString *ID;
++ (NSDictionary *)mj_replacedKeyFromPropertyName;
 @end

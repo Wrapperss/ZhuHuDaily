@@ -14,9 +14,11 @@
 #define appScreen [UIScreen mainScreen].bounds
 
 
-#define LatestStoryUrl http://news-at.zhihu.com/api/4/news/latest
+#define LatestStoryUrl @"http://news-at.zhihu.com/api/4/news/latest"
 
 #import "MJRefresh.h"
 #import "NetworkTool.h"
-
+#import "SVProgressHUD.h"
+#import "MJExtension.h"
+#import "SDWebImage/UIImageView+WebCache.h"
 #endif /* PrefixHeader_pch */

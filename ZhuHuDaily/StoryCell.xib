@@ -19,21 +19,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIj-cg-2ri">
-                        <rect key="frame" x="18" y="15" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIj-cg-2ri">
+                        <rect key="frame" x="23" y="15" width="169" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="cAd-KR-1b9">
-                        <rect key="frame" x="222" y="10" width="80" height="60"/>
+                        <rect key="frame" x="212" y="7.5" width="90" height="65"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="7eS-x3-xsV"/>
-                            <constraint firstAttribute="height" constant="60" id="mHr-HP-g3P"/>
+                            <constraint firstAttribute="width" constant="90" id="7eS-x3-xsV"/>
+                            <constraint firstAttribute="height" constant="65" id="mHr-HP-g3P"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multi_pictures" translatesAutoresizingMaskIntoConstraints="NO" id="Aeg-Fu-7Hk">
-                        <rect key="frame" x="272" y="55" width="30" height="15"/>
+                        <rect key="frame" x="272" y="57.5" width="30" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="K7c-3Y-Zzw"/>
                             <constraint firstAttribute="width" constant="30" id="r0i-oe-SoK"/>
@@ -46,10 +46,12 @@
                     <constraint firstItem="AIj-cg-2ri" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="9a7-N6-MQ6"/>
                     <constraint firstItem="Aeg-Fu-7Hk" firstAttribute="bottom" secondItem="cAd-KR-1b9" secondAttribute="bottom" id="RgY-vN-Otg"/>
                     <constraint firstAttribute="trailingMargin" secondItem="cAd-KR-1b9" secondAttribute="trailing" constant="10" id="ZKg-wl-qh3"/>
-                    <constraint firstItem="AIj-cg-2ri" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="sw2-ot-ryr"/>
+                    <constraint firstItem="cAd-KR-1b9" firstAttribute="trailing" secondItem="AIj-cg-2ri" secondAttribute="trailing" constant="110" id="oDX-Yf-7l5"/>
+                    <constraint firstItem="AIj-cg-2ri" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="sw2-ot-ryr"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="mutilPicture" destination="Aeg-Fu-7Hk" id="O99-k0-bOZ"/>
                 <outlet property="pictureView" destination="cAd-KR-1b9" id="Yd8-VU-xV2"/>
                 <outlet property="titleLabel" destination="AIj-cg-2ri" id="8kW-f4-hw5"/>
             </connections>

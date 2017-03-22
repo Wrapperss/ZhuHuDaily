@@ -9,5 +9,10 @@
 #import "StoryModel.h"
 
 @implementation StoryModel
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"ID": @"id"};
+}
+
 
 @end

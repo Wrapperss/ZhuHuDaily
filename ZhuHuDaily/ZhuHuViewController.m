@@ -8,6 +8,7 @@
 
 #import "ZhuHuViewController.h"
 #import "StoryCell.h"
+#import "StoryModel.h"
 
 @interface ZhuHuViewController ()
 
@@ -20,11 +21,11 @@
     [self setNav];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSLog(@"刷新");
-        
+        [self loadStory];
         [self.tableView.mj_header endRefreshing];
     }];
     [self.tableView.mj_header beginRefreshing];
+    
 }
 
 
@@ -41,14 +42,25 @@
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
 }
 
-#pragma mark - Story
+#pragma mark - LoadStory
 - (void)loadStory {
     [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
-        
+        for (NSDictionary *story in responseObject[@"stories"]) {
+            StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
+            [self.items addObject:storyModel];
+            [self.tableView reloadData];
+        }
     } failure:^(NSError * _Nullable error) {
-        
+
     }];
-    
+}
+
+#pragma mark - LazyLoad
+- (NSMutableArray *)items {
+    if (!_items) {
+        self.items = [[NSMutableArray alloc] init];
+    }
+    return _items;
 }
 #pragma mark - Table view data source
 
@@ -57,12 +69,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    if (self.items.count == 0) {
+        return 10;
+    }
+    else{
+        return self.items.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoryCell *cell = [StoryCell cellWithTableView:tableView];
-    cell.titleLabel.text = @"纸糊日报";
+    if (self.items.count == 0) {
+        cell.titleLabel.text = @"纸糊日报";
+    }
+    else {
+        [cell setCellMsg:self.items[indexPath.row]];
+    }
     return cell;
 }
 

@@ -10,4 +10,6 @@
 
 @interface ZhuHuViewController : UITableViewController
 
+@property (nonatomic, retain) NSMutableArray *items;
+
 @end

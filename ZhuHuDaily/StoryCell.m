@@ -30,4 +30,12 @@
     return storyCell;
 }
 
+- (void)setCellMsg:(StoryModel *)storyModel {
+    self.titleLabel.text = storyModel.title;
+    [self.pictureView sd_setImageWithURL:[NSURL URLWithString:storyModel.images[0]] placeholderImage:[UIImage imageNamed:@"default_image"]];
+    if (storyModel.images.count == 1) {
+        self.mutilPicture.hidden = YES;
+    }
+}
+
 @end
