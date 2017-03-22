@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  ZhuHuViewController.h
 //  ZhuHuDaily
 //
 //  Created by Wrappers Zhang on 2017/3/22.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+@interface ZhuHuViewController : UITableViewController
 
 @end

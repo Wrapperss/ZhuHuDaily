@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FADFCA91E825ADA00FF52E9 /* ZhuHuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */; };
+		9FADFCAC1E825B4500FF52E9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCAB1E825B4500FF52E9 /* MainViewController.m */; };
+		9FADFCB41E825D1400FF52E9 /* ZYWMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCAF1E825D1400FF52E9 /* ZYWMenuButton.m */; };
+		9FADFCB51E825D1400FF52E9 /* ZYWMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCB11E825D1400FF52E9 /* ZYWMenuView.m */; };
+		9FADFCB61E825D1400FF52E9 /* ZYWMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCB31E825D1400FF52E9 /* ZYWMenuViewController.m */; };
 		9FF8FE871E8150890060818D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE861E8150890060818D /* main.m */; };
 		9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE891E8150890060818D /* AppDelegate.m */; };
 		9FF8FE901E8150890060818D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8FE8E1E8150890060818D /* Main.storyboard */; };
@@ -33,12 +38,21 @@
 		9FF8FEE31E8150CD0060818D /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8FECC1E8150CD0060818D /* SVProgressHUD.bundle */; };
 		9FF8FEE41E8150CD0060818D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FECE1E8150CD0060818D /* SVProgressHUD.m */; };
 		9FF8FEE51E8150CD0060818D /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FED01E8150CD0060818D /* SVRadialGradientLayer.m */; };
-		9FF8FF2E1E8152800060818D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FF2D1E8152800060818D /* MainViewController.m */; };
 		9FF8FF331E8154410060818D /* StoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FF311E8154410060818D /* StoryCell.m */; };
 		9FF8FF341E8154410060818D /* StoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8FF321E8154410060818D /* StoryCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuHuViewController.h; sourceTree = "<group>"; };
+		9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuHuViewController.m; sourceTree = "<group>"; };
+		9FADFCAA1E825B4500FF52E9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		9FADFCAB1E825B4500FF52E9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		9FADFCAE1E825D1400FF52E9 /* ZYWMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWMenuButton.h; sourceTree = "<group>"; };
+		9FADFCAF1E825D1400FF52E9 /* ZYWMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWMenuButton.m; sourceTree = "<group>"; };
+		9FADFCB01E825D1400FF52E9 /* ZYWMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWMenuView.h; sourceTree = "<group>"; };
+		9FADFCB11E825D1400FF52E9 /* ZYWMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWMenuView.m; sourceTree = "<group>"; };
+		9FADFCB21E825D1400FF52E9 /* ZYWMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWMenuViewController.h; sourceTree = "<group>"; };
+		9FADFCB31E825D1400FF52E9 /* ZYWMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYWMenuViewController.m; sourceTree = "<group>"; };
 		9FF8FE821E8150890060818D /* ZhuHuDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhuHuDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF8FE861E8150890060818D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FF8FE881E8150890060818D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,8 +110,6 @@
 		9FF8FECF1E8150CD0060818D /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		9FF8FED01E8150CD0060818D /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		9FF8FF261E8151680060818D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		9FF8FF2C1E8152800060818D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		9FF8FF2D1E8152800060818D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		9FF8FF301E8154410060818D /* StoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryCell.h; sourceTree = "<group>"; };
 		9FF8FF311E8154410060818D /* StoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryCell.m; sourceTree = "<group>"; };
 		9FF8FF321E8154410060818D /* StoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryCell.xib; sourceTree = "<group>"; };
@@ -114,6 +126,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FADFCAD1E825D1400FF52E9 /* ZYWMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				9FADFCAE1E825D1400FF52E9 /* ZYWMenuButton.h */,
+				9FADFCAF1E825D1400FF52E9 /* ZYWMenuButton.m */,
+				9FADFCB01E825D1400FF52E9 /* ZYWMenuView.h */,
+				9FADFCB11E825D1400FF52E9 /* ZYWMenuView.m */,
+				9FADFCB21E825D1400FF52E9 /* ZYWMenuViewController.h */,
+				9FADFCB31E825D1400FF52E9 /* ZYWMenuViewController.m */,
+			);
+			path = ZYWMenuView;
+			sourceTree = "<group>";
+		};
 		9FF8FE791E8150890060818D = {
 			isa = PBXGroup;
 			children = (
@@ -254,8 +279,10 @@
 		9FF8FF2B1E81526A0060818D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9FF8FF2C1E8152800060818D /* MainViewController.h */,
-				9FF8FF2D1E8152800060818D /* MainViewController.m */,
+				9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */,
+				9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */,
+				9FADFCAA1E825B4500FF52E9 /* MainViewController.h */,
+				9FADFCAB1E825B4500FF52E9 /* MainViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -263,6 +290,7 @@
 		9FF8FF2F1E81540D0060818D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9FADFCAD1E825D1400FF52E9 /* ZYWMenuView */,
 				9FF8FF301E8154410060818D /* StoryCell.h */,
 				9FF8FF311E8154410060818D /* StoryCell.m */,
 				9FF8FF321E8154410060818D /* StoryCell.xib */,
@@ -347,26 +375,30 @@
 				9FF8FEDC1E8150CD0060818D /* MASViewConstraint.m in Sources */,
 				9FF8FED61E8150CD0060818D /* AFURLSessionManager.m in Sources */,
 				9FF8FEDB1E8150CD0060818D /* MASViewAttribute.m in Sources */,
+				9FADFCAC1E825B4500FF52E9 /* MainViewController.m in Sources */,
 				9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */,
 				9FF8FED21E8150CD0060818D /* AFNetworkReachabilityManager.m in Sources */,
 				9FF8FED71E8150CD0060818D /* MASCompositeConstraint.m in Sources */,
 				9FF8FED91E8150CD0060818D /* MASConstraintMaker.m in Sources */,
+				9FADFCB61E825D1400FF52E9 /* ZYWMenuViewController.m in Sources */,
 				9FF8FEE51E8150CD0060818D /* SVRadialGradientLayer.m in Sources */,
 				9FF8FEDF1E8150CD0060818D /* View+MASAdditions.m in Sources */,
 				9FF8FEE41E8150CD0060818D /* SVProgressHUD.m in Sources */,
+				9FADFCB41E825D1400FF52E9 /* ZYWMenuButton.m in Sources */,
 				9FF8FEDA1E8150CD0060818D /* MASLayoutConstraint.m in Sources */,
 				9FF8FEE01E8150CD0060818D /* ViewController+MASAdditions.m in Sources */,
 				9FF8FED81E8150CD0060818D /* MASConstraint.m in Sources */,
 				9FF8FE871E8150890060818D /* main.m in Sources */,
-				9FF8FF2E1E8152800060818D /* MainViewController.m in Sources */,
 				9FF8FED31E8150CD0060818D /* AFSecurityPolicy.m in Sources */,
 				9FF8FEDD1E8150CD0060818D /* NSArray+MASAdditions.m in Sources */,
 				9FF8FEE11E8150CD0060818D /* SVIndefiniteAnimatedView.m in Sources */,
+				9FADFCA91E825ADA00FF52E9 /* ZhuHuViewController.m in Sources */,
 				9FF8FEDE1E8150CD0060818D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				9FF8FEE21E8150CD0060818D /* SVProgressAnimatedView.m in Sources */,
 				9FF8FED41E8150CD0060818D /* AFURLRequestSerialization.m in Sources */,
 				9FF8FED51E8150CD0060818D /* AFURLResponseSerialization.m in Sources */,
 				9FF8FED11E8150CD0060818D /* AFHTTPSessionManager.m in Sources */,
+				9FADFCB51E825D1400FF52E9 /* ZYWMenuView.m in Sources */,
 				9FF8FF331E8154410060818D /* StoryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
