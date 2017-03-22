@@ -21,6 +21,7 @@
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSLog(@"刷新");
+        
         [self.tableView.mj_header endRefreshing];
     }];
     [self.tableView.mj_header beginRefreshing];
