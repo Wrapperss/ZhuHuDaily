@@ -17,20 +17,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNav];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:52/255.0 green:185/255.0 blue:252/255.0 alpha:1];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSLog(@"刷新");
+        [self.tableView.mj_header endRefreshing];
+    }];
+    [self.tableView.mj_header beginRefreshing];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - NavigationBar
+- (void)setNav {
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:52/255.0 green:185/255.0 blue:252/255.0 alpha:1];
+    
+    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+}
+
+#pragma mark - Story
+- (void)loadStory {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
+        
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
+    
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
