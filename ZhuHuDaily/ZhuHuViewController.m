@@ -21,10 +21,15 @@
     [self setNav];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self loadStory];
+        [self loadLastStory];
         [self.tableView.mj_header endRefreshing];
     }];
     [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self loadBeforeStory];
+        [self.tableView.mj_footer endRefreshing];
+    }];
     
 }
 
@@ -43,7 +48,7 @@
 }
 
 #pragma mark - LoadStory
-- (void)loadStory {
+- (void)loadLastStory {
     [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
@@ -55,12 +60,37 @@
     }];
 }
 
+- (void)loadBeforeStory {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:[[NSString stringWithFormat:BeforeStoryUrl] stringByAppendingString:self.nowDate] parameters:nil success:^(id  _Nullable responseObject) {
+        for (NSDictionary *story in responseObject[@"stories"]) {
+            StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
+            [self.items addObject:storyModel];
+            [self.tableView reloadData];
+        }        
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
+}
+
 #pragma mark - LazyLoad
 - (NSMutableArray *)items {
     if (!_items) {
         self.items = [[NSMutableArray alloc] init];
     }
     return _items;
+}
+
+- (NSString *)nowDate {
+    if (!_nowDate) {
+        NSDate *  senddate=[NSDate date];
+        
+        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+        
+        [dateformatter setDateFormat:@"YYYYMMdd"];
+        
+        self.nowDate = [dateformatter stringFromDate:senddate];
+    }
+    return _nowDate;
 }
 #pragma mark - Table view data source
 

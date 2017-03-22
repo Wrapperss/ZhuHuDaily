@@ -15,7 +15,7 @@
 
 
 #define LatestStoryUrl @"http://news-at.zhihu.com/api/4/news/latest"
-
+#define BeforeStoryUrl @"http://news-at.zhihu.com/api/4/news/before/"
 #import "MJRefresh.h"
 #import "NetworkTool.h"
 #import "SVProgressHUD.h"

@@ -11,5 +11,5 @@
 @interface ZhuHuViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableArray *items;
-
+@property (nonatomic, copy) NSString *nowDate;
 @end
