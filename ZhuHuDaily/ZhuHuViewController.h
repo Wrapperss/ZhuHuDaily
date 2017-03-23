@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ZhuHuViewController : UITableViewController
-
-@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, retain) NSMutableArray *storiesArray;
+@property (nonatomic, retain) NSMutableArray *topStoriesArray;
 @property (nonatomic, copy) NSString *nowDate;
 @end

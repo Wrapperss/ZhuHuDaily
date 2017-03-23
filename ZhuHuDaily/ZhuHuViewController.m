@@ -19,8 +19,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpUI];
+    [self setRefresh];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+#pragma mark - UI 
+- (void)setUpUI {
     [self setNav];
-    
+    self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 250) TopStoryArray:self.topStoriesArray];
+}
+#pragma mark - Refresh 
+- (void)setRefresh {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadLastStory];
         [self.tableView.mj_header endRefreshing];
@@ -31,18 +45,11 @@
         [self loadBeforeStory];
         [self.tableView.mj_footer endRefreshing];
     }];
-    
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - NavigationBar
 - (void)setNav {
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:52/255.0 green:185/255.0 blue:252/255.0 alpha:1];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:23/255.0 green:116/255.0 blue:253/255.0 alpha:1];
     
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
@@ -53,9 +60,12 @@
     [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
-            [self.items addObject:storyModel];
-            [self.tableView reloadData];
+            [self.storiesArray addObject:storyModel];
+            
         }
+        self.topStoriesArray = [NSMutableArray arrayWithArray:responseObject[@"top_stories"]];
+        self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 250) TopStoryArray:self.topStoriesArray];
+        [self.tableView reloadData];
     } failure:^(NSError * _Nullable error) {
 
     }];
@@ -65,7 +75,7 @@
     [[NetworkTool sharedNetworkTool] loadDataInfo:[[NSString stringWithFormat:BeforeStoryUrl] stringByAppendingString:self.nowDate] parameters:nil success:^(id  _Nullable responseObject) {
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
-            [self.items addObject:storyModel];
+            [self.storiesArray addObject:storyModel];
             [self.tableView reloadData];
         }        
     } failure:^(NSError * _Nullable error) {
@@ -74,13 +84,18 @@
 }
 
 #pragma mark - LazyLoad
-- (NSMutableArray *)items {
-    if (!_items) {
-        self.items = [[NSMutableArray alloc] init];
+- (NSMutableArray *)storiesArray {
+    if (!_storiesArray) {
+        self.storiesArray = [[NSMutableArray alloc] init];
     }
-    return _items;
+    return _storiesArray;
 }
-
+- (NSMutableArray *)topStoriesArray {
+    if (!_topStoriesArray) {
+        self.topStoriesArray = [[NSMutableArray alloc] init];
+    }
+    return _topStoriesArray;
+}
 - (NSString *)nowDate {
     if (!_nowDate) {
         NSDate *  senddate=[NSDate date];
@@ -96,25 +111,25 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.items.count == 0) {
+    if (self.storiesArray.count == 0) {
         return 10;
     }
     else{
-        return self.items.count;
+        return self.storiesArray.count;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoryCell *cell = [StoryCell cellWithTableView:tableView];
-    if (self.items.count == 0) {
+    if (self.storiesArray.count == 0) {
         cell.titleLabel.text = @"纸糊日报";
     }
     else {
-        [cell setCellMsg:self.items[indexPath.row]];
+        [cell setCellMsg:self.storiesArray[indexPath.row]];
     }
     return cell;
 }
@@ -124,14 +139,17 @@
     return 80;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    TopStoryView *topView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 180)];
-    return topView;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 180;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    if (section == 0) {
+//        TopStoryView *topView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 200) TopStoryArray:self.topStoriesArray];
+//        return topView;
+//    }
+//    return nil;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 200;
+//}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

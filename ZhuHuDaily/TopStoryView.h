@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) UIScrollView *topScrollView;
 @property (nonatomic, retain) UIPageControl *topPageControl;
-
 @property (nonatomic, strong) NSTimer *timer;
+
+- (id)initWithFrame:(CGRect)frame TopStoryArray:(NSArray *)storyArray;
 @end
