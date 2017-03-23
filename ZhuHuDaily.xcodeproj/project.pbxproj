@@ -33,6 +33,7 @@
 		9FADFCF91E82668E00FF52E9 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCE51E82668E00FF52E9 /* UIView+MJExtension.m */; };
 		9FADFCFC1E82690E00FF52E9 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCFB1E82690E00FF52E9 /* NetworkTool.m */; };
 		9FADFD001E826A3F00FF52E9 /* StoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */; };
+		9FD08D071E8365DF008B5F69 /* TopStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD08D061E8365DF008B5F69 /* TopStoryView.m */; };
 		9FF8FE871E8150890060818D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE861E8150890060818D /* main.m */; };
 		9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE891E8150890060818D /* AppDelegate.m */; };
 		9FF8FE901E8150890060818D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8FE8E1E8150890060818D /* Main.storyboard */; };
@@ -150,6 +151,8 @@
 		9FADFCFB1E82690E00FF52E9 /* NetworkTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTool.m; sourceTree = "<group>"; };
 		9FADFCFE1E826A3F00FF52E9 /* StoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryModel.h; sourceTree = "<group>"; };
 		9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryModel.m; sourceTree = "<group>"; };
+		9FD08D051E8365DF008B5F69 /* TopStoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopStoryView.h; sourceTree = "<group>"; };
+		9FD08D061E8365DF008B5F69 /* TopStoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopStoryView.m; sourceTree = "<group>"; };
 		9FF8FE821E8150890060818D /* ZhuHuDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhuHuDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF8FE861E8150890060818D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FF8FE881E8150890060818D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -568,6 +571,8 @@
 				9FF8FF301E8154410060818D /* StoryCell.h */,
 				9FF8FF311E8154410060818D /* StoryCell.m */,
 				9FF8FF321E8154410060818D /* StoryCell.xib */,
+				9FD08D051E8365DF008B5F69 /* TopStoryView.h */,
+				9FD08D061E8365DF008B5F69 /* TopStoryView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -780,6 +785,7 @@
 				9FF8FED91E8150CD0060818D /* MASConstraintMaker.m in Sources */,
 				9FADFCB61E825D1400FF52E9 /* ZYWMenuViewController.m in Sources */,
 				9FADFCF11E82668E00FF52E9 /* MJRefreshGifHeader.m in Sources */,
+				9FD08D071E8365DF008B5F69 /* TopStoryView.m in Sources */,
 				9FF8FEE51E8150CD0060818D /* SVRadialGradientLayer.m in Sources */,
 				9FADFCF31E82668E00FF52E9 /* MJRefreshStateHeader.m in Sources */,
 				9FF8FEDF1E8150CD0060818D /* View+MASAdditions.m in Sources */,

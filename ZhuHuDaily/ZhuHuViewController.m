@@ -9,6 +9,7 @@
 #import "ZhuHuViewController.h"
 #import "StoryCell.h"
 #import "StoryModel.h"
+#import "TopStoryView.h"
 
 @interface ZhuHuViewController ()
 
@@ -95,7 +96,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -123,7 +124,14 @@
     return 80;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    TopStoryView *topView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 180)];
+    return topView;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 180;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
