@@ -36,7 +36,7 @@
 }
 - (void)setNav {
     self.navigationController.navigationBar.barTintColor = ZhuHuColor;
-    
+    self.navigationController.navigationBar.translucent = NO;
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
 }
