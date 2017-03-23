@@ -10,6 +10,7 @@
 #import "StoryCell.h"
 #import "StoryModel.h"
 #import "TopStoryView.h"
+#import "DateSectioinView.h"
 
 @interface ZhuHuViewController ()
 
@@ -33,27 +34,25 @@
     [self setNav];
     self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 250) TopStoryArray:self.topStoriesArray];
 }
+- (void)setNav {
+    self.navigationController.navigationBar.barTintColor = ZhuHuColor;
+    
+    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+}
+
 #pragma mark - Refresh 
 - (void)setRefresh {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadLastStory];
-        [self.tableView.mj_header endRefreshing];
     }];
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self loadBeforeStory];
-        [self.tableView.mj_footer endRefreshing];
     }];
 }
 
-#pragma mark - NavigationBar
-- (void)setNav {
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:23/255.0 green:116/255.0 blue:253/255.0 alpha:1];
-    
-    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
-}
 
 #pragma mark - LoadStory
 - (void)loadLastStory {
@@ -66,6 +65,7 @@
         self.topStoriesArray = [NSMutableArray arrayWithArray:responseObject[@"top_stories"]];
         self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 250) TopStoryArray:self.topStoriesArray];
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
     } failure:^(NSError * _Nullable error) {
 
     }];
@@ -76,8 +76,9 @@
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
             [self.storiesArray addObject:storyModel];
-            [self.tableView reloadData];
-        }        
+        }
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -111,7 +112,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -131,6 +132,7 @@
     else {
         [cell setCellMsg:self.storiesArray[indexPath.row]];
     }
+    NSLog(@"第%ld节", indexPath.section);
     return cell;
 }
 
@@ -139,21 +141,21 @@
     return 80;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        TopStoryView *topView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 200) TopStoryArray:self.topStoriesArray];
-//        return topView;
-//    }
-//    return nil;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 200;
-//}
+
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    DateSectioinView *dateSectionView = [[DateSectioinView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 30) Date:@"2017年02月23日"];
+    return dateSectionView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
 /*
-// Override to support conditional editing of the table view.
+ Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+     Return NO if you do not want the specified item to be editable.
     return YES;
 }
 */

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F9EE2D61E83A8FB007722DA /* DateSectioinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */; };
 		9FADFCA91E825ADA00FF52E9 /* ZhuHuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */; };
 		9FADFCB41E825D1400FF52E9 /* ZYWMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCAF1E825D1400FF52E9 /* ZYWMenuButton.m */; };
 		9FADFCB51E825D1400FF52E9 /* ZYWMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCB11E825D1400FF52E9 /* ZYWMenuView.m */; };
@@ -99,6 +100,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F9EE2D41E83A8FB007722DA /* DateSectioinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSectioinView.h; sourceTree = "<group>"; };
+		9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSectioinView.m; sourceTree = "<group>"; };
 		9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuHuViewController.h; sourceTree = "<group>"; };
 		9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuHuViewController.m; sourceTree = "<group>"; };
 		9FADFCAE1E825D1400FF52E9 /* ZYWMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYWMenuButton.h; sourceTree = "<group>"; };
@@ -573,6 +576,8 @@
 				9FF8FF321E8154410060818D /* StoryCell.xib */,
 				9FD08D051E8365DF008B5F69 /* TopStoryView.h */,
 				9FD08D061E8365DF008B5F69 /* TopStoryView.m */,
+				9F9EE2D41E83A8FB007722DA /* DateSectioinView.h */,
+				9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F9EE2D61E83A8FB007722DA /* DateSectioinView.m in Sources */,
 				9FF908091E82BCE500774312 /* SDWebImageManager.m in Sources */,
 				9FF9080A1E82BCE500774312 /* SDWebImagePrefetcher.m in Sources */,
 				9FF8FEDC1E8150CD0060818D /* MASViewConstraint.m in Sources */,
