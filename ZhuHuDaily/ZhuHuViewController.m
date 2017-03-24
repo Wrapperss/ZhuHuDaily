@@ -75,11 +75,17 @@
 }
 
 - (void)loadBeforeStory {
-    [[NetworkTool sharedNetworkTool] loadDataInfo:[[NSString stringWithFormat:BeforeStoryUrl] stringByAppendingString:self.nowDate] parameters:nil success:^(id  _Nullable responseObject) {
+    NSString *completeBeforeStoryUrl = [[NSString stringWithFormat:BeforeStoryUrl] stringByAppendingString:[[DateTool shareDateTool] transformUrlStringFromDate:self.date]];
+    
+    [[NetworkTool sharedNetworkTool] loadDataInfo:completeBeforeStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
+        self.date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:_date];
+        NSMutableArray *array = [[NSMutableArray alloc] init];
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
-            [self.storiesArray addObject:storyModel];
+            [array addObject:storyModel];
+            //[self.storiesArray addObject:storyModel];
         }
+        [self.beforeStoriesArray addObject:array];
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
     } failure:^(NSError * _Nullable error) {
@@ -100,43 +106,56 @@
     }
     return _topStoriesArray;
 }
-
-- (NSString *)nowDate {
-    if (!_nowDate) {
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMdd"];
-        
-        self.nowDate = [dateformatter stringFromDate:senddate];
+- (NSMutableArray<NSMutableArray *> *)beforeStoriesArray {
+    if (!_beforeStoriesArray) {
+        self.beforeStoriesArray = [[NSMutableArray alloc] init];
     }
-    return _nowDate;
+    return _beforeStoriesArray;
+}
+- (NSDate *)date {
+    if (!_date) {
+        _date = [[NSDate alloc] init];
+    }
+    return _date;
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if (_beforeStoriesArray.count == 0) {
+        return 1;
+    }
+    else {
+        return _beforeStoriesArray.count + 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.storiesArray.count == 0) {
-        return 10;
+    if (section == 0) {
+        if (_storiesArray.count == 0) {
+            return 10;
+        }
+        else {
+            return _storiesArray.count;
+        }
     }
-    else{
-        return self.storiesArray.count;
+    else {
+        return _beforeStoriesArray[section-1].count;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoryCell *cell = [StoryCell cellWithTableView:tableView];
-    if (self.storiesArray.count == 0) {
-        cell.titleLabel.text = @"纸糊日报";
+    if (indexPath.section == 0) {
+        if (_storiesArray.count == 0) {
+            cell.titleLabel.text = @"纸糊日报";
+        }
+        else {
+            [cell setCellMsg:_storiesArray[indexPath.row]];
+        }
     }
     else {
-        [cell setCellMsg:self.storiesArray[indexPath.row]];
+        [cell setCellMsg:_beforeStoriesArray[indexPath.section-1][indexPath.row]];
     }
-    NSLog(@"第%ld节", indexPath.section);
     return cell;
 }
 
@@ -149,7 +168,11 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    DateSectioinView *dateSectionView = [[DateSectioinView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, 30) Date:@"2017年02月23日"];
+    NSDate *nowDate = [[NSDate alloc] init];
+    for (int i = 0; i < section; i++) {
+        nowDate = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:nowDate];
+    }
+    DateSectioinView *dateSectionView = [[DateSectioinView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, 30) Date:[[DateTool shareDateTool] transformTitleStringFromDate:nowDate]];
     return dateSectionView;
 }
 

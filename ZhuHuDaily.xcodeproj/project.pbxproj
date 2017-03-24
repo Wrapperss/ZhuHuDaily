@@ -35,6 +35,7 @@
 		9FADFCFC1E82690E00FF52E9 /* NetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCFB1E82690E00FF52E9 /* NetworkTool.m */; };
 		9FADFD001E826A3F00FF52E9 /* StoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */; };
 		9FD08D071E8365DF008B5F69 /* TopStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD08D061E8365DF008B5F69 /* TopStoryView.m */; };
+		9FE85AAB1E84A31C008C8592 /* DateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE85AAA1E84A31C008C8592 /* DateTool.m */; };
 		9FF8FE871E8150890060818D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE861E8150890060818D /* main.m */; };
 		9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE891E8150890060818D /* AppDelegate.m */; };
 		9FF8FE901E8150890060818D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8FE8E1E8150890060818D /* Main.storyboard */; };
@@ -156,6 +157,8 @@
 		9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryModel.m; sourceTree = "<group>"; };
 		9FD08D051E8365DF008B5F69 /* TopStoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopStoryView.h; sourceTree = "<group>"; };
 		9FD08D061E8365DF008B5F69 /* TopStoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopStoryView.m; sourceTree = "<group>"; };
+		9FE85AA91E84A31C008C8592 /* DateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTool.h; sourceTree = "<group>"; };
+		9FE85AAA1E84A31C008C8592 /* DateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTool.m; sourceTree = "<group>"; };
 		9FF8FE821E8150890060818D /* ZhuHuDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhuHuDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF8FE861E8150890060818D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FF8FE881E8150890060818D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -554,6 +557,8 @@
 				9FADFCFA1E82690E00FF52E9 /* NetworkTool.h */,
 				9FADFCFB1E82690E00FF52E9 /* NetworkTool.m */,
 				9FF8FF261E8151680060818D /* PrefixHeader.pch */,
+				9FE85AA91E84A31C008C8592 /* DateTool.h */,
+				9FE85AAA1E84A31C008C8592 /* DateTool.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -774,6 +779,7 @@
 				9FF8FEDB1E8150CD0060818D /* MASViewAttribute.m in Sources */,
 				9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */,
 				9FF907CA1E82B1EE00774312 /* MJExtensionConst.m in Sources */,
+				9FE85AAB1E84A31C008C8592 /* DateTool.m in Sources */,
 				9FF907CD1E82B1EE00774312 /* MJPropertyKey.m in Sources */,
 				9FADFCFC1E82690E00FF52E9 /* NetworkTool.m in Sources */,
 				9FF9080D1E82BCE500774312 /* UIImage+MultiFormat.m in Sources */,
