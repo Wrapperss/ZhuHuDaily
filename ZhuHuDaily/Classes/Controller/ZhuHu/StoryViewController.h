@@ -12,4 +12,7 @@
 
 @property (nonatomic, copy)NSString *storyId;
 
+@property (nonatomic, retain)UIWebView *storyWebView;
+
+- (instancetype)initWithStoryId:(NSString *)storyId;
 @end

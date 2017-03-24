@@ -101,19 +101,19 @@
 }
 
 #pragma mark - LazyLoad
-- (NSMutableArray *)storiesArray {
+- (NSMutableArray<StoryModel *> *)storiesArray {
     if (!_storiesArray) {
         self.storiesArray = [[NSMutableArray alloc] init];
     }
     return _storiesArray;
 }
-- (NSMutableArray *)topStoriesArray {
+- (NSMutableArray<StoryModel *> *)topStoriesArray {
     if (!_topStoriesArray) {
         self.topStoriesArray = [[NSMutableArray alloc] init];
     }
     return _topStoriesArray;
 }
-- (NSMutableArray<NSMutableArray *> *)beforeStoriesArray {
+- (NSMutableArray<NSMutableArray<StoryModel *> *> *)beforeStoriesArray {
     if (!_beforeStoriesArray) {
         self.beforeStoriesArray = [[NSMutableArray alloc] init];
     }
@@ -188,7 +188,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    StoryViewController *storyViewController = [[StoryViewController alloc] init];
+    StoryViewController *storyViewController;
+    if (indexPath.section == 0) {
+        storyViewController = [[StoryViewController alloc] initWithStoryId:self.storiesArray[indexPath.row].ID];
+    }
+    else {
+        storyViewController = [[StoryViewController alloc] initWithStoryId:self.beforeStoriesArray[indexPath.section][indexPath.row].ID];
+    }
     
     [self.navigationController pushViewController:storyViewController animated:YES];
 }
