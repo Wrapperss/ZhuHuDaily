@@ -74,7 +74,7 @@
     titleLabel.numberOfLines = 2;
     titleLabel.shadowColor = [UIColor colorWithWhite:0.1f alpha:0.8f];
     titleLabel.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    titleLabel.frame = CGRectMake(10 + index * _topScrollView.frame.size.width, 180, _topScrollView.frame.size.width - 20, 50);
+    titleLabel.frame = CGRectMake(10 + index * _topScrollView.frame.size.width, TopStoriesHeight * 0.65, _topScrollView.frame.size.width - 20, 50);
     [_topScrollView addSubview:titleLabel];
 }
 - (void)startTimer {

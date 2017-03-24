@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:appScreen];
+    self.window = [[UIWindow alloc] initWithFrame:AppScreen];
     
     ZhuHuViewController *zhuHu = [[ZhuHuViewController alloc] init];
     zhuHu.title = @"纸糊日报";

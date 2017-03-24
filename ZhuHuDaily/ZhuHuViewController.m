@@ -32,7 +32,7 @@
 #pragma mark - UI 
 - (void)setUpUI {
     [self setNav];
-    self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 250) TopStoryArray:self.topStoriesArray];
+    [self setTableviewHeadView];
 }
 - (void)setNav {
     self.navigationController.navigationBar.barTintColor = ZhuHuColor;
@@ -41,6 +41,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
 }
 
+- (void)setTableviewHeadView {
+    self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, TopStoriesHeight) TopStoryArray:self.topStoriesArray];
+}
 #pragma mark - Refresh 
 - (void)setRefresh {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -63,7 +66,7 @@
             
         }
         self.topStoriesArray = [NSMutableArray arrayWithArray:responseObject[@"top_stories"]];
-        self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 250) TopStoryArray:self.topStoriesArray];
+        [self setTableviewHeadView];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     } failure:^(NSError * _Nullable error) {
@@ -97,6 +100,7 @@
     }
     return _topStoriesArray;
 }
+
 - (NSString *)nowDate {
     if (!_nowDate) {
         NSDate *  senddate=[NSDate date];
@@ -145,7 +149,7 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    DateSectioinView *dateSectionView = [[DateSectioinView alloc] initWithFrame:CGRectMake(0, 0, appWidth, 30) Date:@"2017年02月23日"];
+    DateSectioinView *dateSectionView = [[DateSectioinView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, 30) Date:@"2017年02月23日"];
     return dateSectionView;
 }
 
