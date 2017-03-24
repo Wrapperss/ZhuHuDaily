@@ -11,6 +11,7 @@
 #import "StoryModel.h"
 #import "TopStoryView.h"
 #import "DateSectioinView.h"
+#import "StoryViewController.h"
 
 @interface ZhuHuViewController ()
 
@@ -25,6 +26,10 @@
 }
 
 
+- (void)reSetNav {
+    NSLog(@"重新设置");
+    self.navigationController.navigationBar.hidden = NO;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -60,12 +65,15 @@
 #pragma mark - LoadStory
 - (void)loadLastStory {
     [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
+        //最新故事
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
             [self.storiesArray addObject:storyModel];
             
         }
+        //封面故事
         self.topStoriesArray = [NSMutableArray arrayWithArray:responseObject[@"top_stories"]];
+        
         [self setTableviewHeadView];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
@@ -83,7 +91,6 @@
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
             [array addObject:storyModel];
-            //[self.storiesArray addObject:storyModel];
         }
         [self.beforeStoriesArray addObject:array];
         [self.tableView reloadData];
@@ -178,6 +185,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 30;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    StoryViewController *storyViewController = [[StoryViewController alloc] init];
+    
+    [self.navigationController pushViewController:storyViewController animated:YES];
 }
 /*
  Override to support conditional editing of the table view.

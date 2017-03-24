@@ -23,6 +23,7 @@
     return self;
 }
 - (void)setUpUI:(NSArray *)topStoriesArray {
+    self.backgroundColor = [UIColor lightGrayColor];
     [self setScrollview:topStoriesArray];
     [self setPageControl];
     [self startTimer];

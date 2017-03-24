@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "ZhuHuViewController.h"
 #import "ZYWMenuViewController.h"
-
+#include "ZhuHuNavigationController.h"
 @interface AppDelegate ()
 
 @end
@@ -23,7 +23,7 @@
     
     ZhuHuViewController *zhuHu = [[ZhuHuViewController alloc] init];
     zhuHu.title = @"纸糊日报";
-    UINavigationController *zhuHuNav = [[UINavigationController alloc] initWithRootViewController:zhuHu];
+    ZhuHuNavigationController *zhuHuNav = [[ZhuHuNavigationController alloc] initWithRootViewController:zhuHu];
     
     NSArray *viewControllerArray = @[zhuHuNav];
     

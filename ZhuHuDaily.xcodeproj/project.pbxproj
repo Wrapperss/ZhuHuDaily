@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F6923E21E84BD4C00F1FF6A /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6923E11E84BD4C00F1FF6A /* StoryViewController.m */; };
+		9F6923E61E84D1E800F1FF6A /* ZhuHuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6923E51E84D1E800F1FF6A /* ZhuHuNavigationController.m */; };
 		9F9EE2D61E83A8FB007722DA /* DateSectioinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */; };
 		9FADFCA91E825ADA00FF52E9 /* ZhuHuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */; };
 		9FADFCB41E825D1400FF52E9 /* ZYWMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCAF1E825D1400FF52E9 /* ZYWMenuButton.m */; };
@@ -101,6 +103,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F6923E01E84BD4C00F1FF6A /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
+		9F6923E11E84BD4C00F1FF6A /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
+		9F6923E41E84D1E800F1FF6A /* ZhuHuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuHuNavigationController.h; sourceTree = "<group>"; };
+		9F6923E51E84D1E800F1FF6A /* ZhuHuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuHuNavigationController.m; sourceTree = "<group>"; };
 		9F9EE2D41E83A8FB007722DA /* DateSectioinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSectioinView.h; sourceTree = "<group>"; };
 		9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSectioinView.m; sourceTree = "<group>"; };
 		9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuHuViewController.h; sourceTree = "<group>"; };
@@ -300,6 +306,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F6923E31E84D1BF00F1FF6A /* ZhuHu */ = {
+			isa = PBXGroup;
+			children = (
+				9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */,
+				9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */,
+				9F6923E01E84BD4C00F1FF6A /* StoryViewController.h */,
+				9F6923E11E84BD4C00F1FF6A /* StoryViewController.m */,
+				9F6923E41E84D1E800F1FF6A /* ZhuHuNavigationController.h */,
+				9F6923E51E84D1E800F1FF6A /* ZhuHuNavigationController.m */,
+			);
+			name = ZhuHu;
+			sourceTree = "<group>";
+		};
 		9FADFCAD1E825D1400FF52E9 /* ZYWMenuView */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,8 +585,7 @@
 		9FF8FF2B1E81526A0060818D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */,
-				9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */,
+				9F6923E31E84D1BF00F1FF6A /* ZhuHu */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -769,6 +787,7 @@
 				9FADFCED1E82668E00FF52E9 /* MJRefreshAutoStateFooter.m in Sources */,
 				9FF908191E82BE8A00774312 /* FLAnimatedImage.m in Sources */,
 				9FADFCF91E82668E00FF52E9 /* UIView+MJExtension.m in Sources */,
+				9F6923E21E84BD4C00F1FF6A /* StoryViewController.m in Sources */,
 				9FF908011E82BCE500774312 /* NSData+ImageContentType.m in Sources */,
 				9FF8FED61E8150CD0060818D /* AFURLSessionManager.m in Sources */,
 				9FADFCE81E82668E00FF52E9 /* MJRefreshComponent.m in Sources */,
@@ -794,6 +813,7 @@
 				9FF908041E82BCE500774312 /* SDImageCacheConfig.m in Sources */,
 				9FF8FED21E8150CD0060818D /* AFNetworkReachabilityManager.m in Sources */,
 				9FF8FED71E8150CD0060818D /* MASCompositeConstraint.m in Sources */,
+				9F6923E61E84D1E800F1FF6A /* ZhuHuNavigationController.m in Sources */,
 				9FF8FED91E8150CD0060818D /* MASConstraintMaker.m in Sources */,
 				9FADFCB61E825D1400FF52E9 /* ZYWMenuViewController.m in Sources */,
 				9FADFCF11E82668E00FF52E9 /* MJRefreshGifHeader.m in Sources */,
