@@ -14,8 +14,10 @@
 #define AppScreen [UIScreen mainScreen].bounds
 
 
-#define LatestStoryUrl @"http://news-at.zhihu.com/api/4/news/latest"
-#define BeforeStoryUrl @"http://news-at.zhihu.com/api/4/news/before/"
+#define LatestStoryApi @"http://news-at.zhihu.com/api/4/news/latest"
+#define BeforeStoryApi @"http://news-at.zhihu.com/api/4/news/before/"
+#define OneStoryDeltailApi @"http://news-at.zhihu.com/api/4/news/"
+
 #define AppWidth AppScreen.size.width
 #define AppHeight AppScreen.size.height
 #define TopStoriesHeight AppWidth/16*9
@@ -26,6 +28,6 @@
 #include "DateTool.h"
 #import "SVProgressHUD.h"
 #import "MJExtension.h"
-#import "SDWebImage/UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 
 #endif /* PrefixHeader_pch */

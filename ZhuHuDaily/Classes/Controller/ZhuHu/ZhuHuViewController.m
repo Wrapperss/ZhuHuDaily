@@ -64,7 +64,7 @@
 
 #pragma mark - LoadStory
 - (void)loadLastStory {
-    [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
+    [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryApi parameters:nil success:^(id  _Nullable responseObject) {
         //最新故事
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
@@ -83,7 +83,7 @@
 }
 
 - (void)loadBeforeStory {
-    NSString *completeBeforeStoryUrl = [[NSString stringWithFormat:BeforeStoryUrl] stringByAppendingString:[[DateTool shareDateTool] transformUrlStringFromDate:self.date]];
+    NSString *completeBeforeStoryUrl = [[NSString stringWithFormat:BeforeStoryApi] stringByAppendingString:[[DateTool shareDateTool] transformUrlStringFromDate:self.date]];
     
     [[NetworkTool sharedNetworkTool] loadDataInfo:completeBeforeStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
         self.date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:_date];

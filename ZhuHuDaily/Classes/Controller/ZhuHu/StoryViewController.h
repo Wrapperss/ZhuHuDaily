@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoryDetailModel.h"
 
 @interface StoryViewController : UIViewController
 
 @property (nonatomic, copy)NSString *storyId;
 
 @property (nonatomic, retain)UIWebView *storyWebView;
+
+@property (nonatomic, retain)UIView *fakeNavigationBar;
+
+@property (nonatomic, retain)StoryDetailModel *storyDetail;
 
 - (instancetype)initWithStoryId:(NSString *)storyId;
 @end
