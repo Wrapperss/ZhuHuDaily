@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "StoryModel.h"
+#import "TopStoryModel.h"
 @interface ZhuHuViewController : UITableViewController
 @property (nonatomic, retain) NSMutableArray<StoryModel *> *storiesArray;
-@property (nonatomic, retain) NSMutableArray<StoryModel *> *topStoriesArray;
+@property (nonatomic, retain) NSMutableArray<TopStoryModel *> *topStoriesArray;
 @property (nonatomic, retain) NSMutableArray<NSMutableArray<StoryModel *> *> *beforeStoriesArray;
 @property (nonatomic, retain) NSDate *date;
 @end

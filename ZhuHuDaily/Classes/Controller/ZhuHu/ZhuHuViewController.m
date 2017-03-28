@@ -13,7 +13,9 @@
 #import "DateSectioinView.h"
 #import "StoryViewController.h"
 
-@interface ZhuHuViewController ()
+@interface ZhuHuViewController ()<TopStoryViewDelegate>
+
+@property (nonatomic, strong)TopStoryView *topStoryView;
 
 @end
 
@@ -25,16 +27,16 @@
     [self setRefresh];
 }
 
-
-- (void)reSetNav {
-    NSLog(@"重新设置");
-    self.navigationController.navigationBar.hidden = NO;
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark - UI 
+
+#pragma mark - TopStoryViewDelegate 
+- (void)showTopStoryDetail {
+    NSLog(@"点击了");
+}
+#pragma mark - UI
 - (void)setUpUI {
     [self setNav];
     [self setTableviewHeadView];
@@ -47,7 +49,7 @@
 }
 
 - (void)setTableviewHeadView {
-    self.tableView.tableHeaderView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, TopStoriesHeight) TopStoryArray:self.topStoriesArray];
+    self.tableView.tableHeaderView = self.topStoryView;
 }
 #pragma mark - Refresh 
 - (void)setRefresh {
@@ -69,12 +71,14 @@
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
             [self.storiesArray addObject:storyModel];
-            
         }
-        //封面故事
-        self.topStoriesArray = [NSMutableArray arrayWithArray:responseObject[@"top_stories"]];
         
-        [self setTableviewHeadView];
+        //封面故事
+        for (NSDictionary *topStory in responseObject[@"top_stories"]) {
+            TopStoryModel *topStoryModel = [TopStoryModel mj_objectWithKeyValues:topStory];
+            [self.topStoriesArray addObject:topStoryModel];
+        }
+        [self.topStoryView reSetUpUI:self.topStoriesArray];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     } failure:^(NSError * _Nullable error) {
@@ -107,7 +111,7 @@
     }
     return _storiesArray;
 }
-- (NSMutableArray<StoryModel *> *)topStoriesArray {
+- (NSMutableArray<TopStoryModel *> *)topStoriesArray {
     if (!_topStoriesArray) {
         self.topStoriesArray = [[NSMutableArray alloc] init];
     }
@@ -124,6 +128,15 @@
         _date = [[NSDate alloc] init];
     }
     return _date;
+}
+
+- (TopStoryView *)topStoryView {
+    if (!_topStoryView) {
+        _topStoryView = [[TopStoryView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, TopStoriesHeight)];
+        _topStoryView.delegate = self;
+        [_topStoryView setUpUI];
+    }
+    return _topStoryView;
 }
 #pragma mark - Table view data source
 
@@ -166,13 +179,9 @@
     return cell;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80;
 }
-
-
-
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NSDate *nowDate = [[NSDate alloc] init];
@@ -197,6 +206,22 @@
     }
     
     [self.navigationController pushViewController:storyViewController animated:YES];
+}
+
+//设置tableViewCell分割线上下去边线，中间缩进
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIEdgeInsets UIEgde = UIEdgeInsetsMake(0, 15, 0, 15);
+    
+    
+    if (indexPath.section == self.storiesArray.count-1) {
+        cell.preservesSuperviewLayoutMargins = NO;
+        cell.layoutMargins = UIEdgeInsetsZero;
+        cell.separatorInset = UIEdgeInsetsMake(0, AppWidth, 0, 0);
+    }else{
+        [cell setSeparatorInset:UIEgde];
+        
+    }
 }
 /*
  Override to support conditional editing of the table view.

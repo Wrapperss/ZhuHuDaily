@@ -8,39 +8,36 @@
 
 #import "TopStoryView.h"
 
-@interface TopStoryView ()<UIScrollViewDelegate>
+@interface TopStoryView ()<UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @end
 
 @implementation TopStoryView
 
 
-- (id)initWithFrame:(CGRect)frame TopStoryArray:(NSArray *)topStoryArray {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setUpUI:topStoryArray];
-    }
-    return self;
-}
-- (void)setUpUI:(NSArray *)topStoriesArray {
+- (void)setUpUI {
     self.backgroundColor = [UIColor lightGrayColor];
-    [self setScrollview:topStoriesArray];
+    [self setScrollview];
     [self setPageControl];
     [self startTimer];
+    [self.delegate showTopStoryDetail];
 }
-- (void)setScrollview:(NSArray *)topStoriesArray {
+- (void)setScrollview {
     self.topScrollView.frame = self.bounds;
     _topScrollView.delegate = self;
     for (int i = 0; i < 5; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * _topScrollView.frame.size.width, 0, _topScrollView.frame.size.width, _topScrollView.frame.size.height)];
-        if (topStoriesArray.count == 0) {
+        if (_topStoriesArray.count == 0) {
             [imageView setImage:[UIImage imageNamed:@"default_image"]];
         }
         else {
-            [imageView sd_setImageWithURL:[NSURL URLWithString:topStoriesArray[i][@"image"]] placeholderImage:[UIImage imageNamed:@"default_image"]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:_topStoriesArray[i].image] placeholderImage:[UIImage imageNamed:@"default_image"]];
         }
+        [self setLabel:i AndLabelMessage:imageView];
+        
+        //设置TopStory的按钮
+        //[self setTopStoryCoverButton:imageView AtIndex:i];
         [_topScrollView addSubview:imageView];
-        [self setLabel:i TopStoriesArray:topStoriesArray];
     }
     _topScrollView.contentSize = CGSizeMake(5 * _topScrollView.frame.size.width, 0);
     _topScrollView.showsHorizontalScrollIndicator = NO;
@@ -61,13 +58,13 @@
     }];
 }
 
-- (void)setLabel:(NSInteger) index TopStoriesArray:(NSArray *) topStoriesArray{
+- (void)setLabel:(NSInteger)index AndLabelMessage:(UIImageView *) imageView{
     UILabel *titleLabel = [[UILabel alloc] init];
-    if (topStoriesArray.count == 0) {
+    if (_topStoriesArray.count == 0) {
         titleLabel.text = @"";
     }
     else {
-        titleLabel.text = topStoriesArray[index][@"title"];
+        titleLabel.text = _topStoriesArray[index].title;
     }
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:15];
@@ -75,9 +72,23 @@
     titleLabel.numberOfLines = 2;
     titleLabel.shadowColor = [UIColor colorWithWhite:0.1f alpha:0.8f];
     titleLabel.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    titleLabel.frame = CGRectMake(10 + index * _topScrollView.frame.size.width, TopStoriesHeight * 0.65, _topScrollView.frame.size.width - 20, 50);
-    [_topScrollView addSubview:titleLabel];
+    titleLabel.frame = CGRectMake(10, TopStoriesHeight * 0.65, _topScrollView.frame.size.width - 20, 50);
+    [imageView addSubview:titleLabel];
 }
+
+- (void)setTopStoryCoverButton:(UIImageView *)imageView AtIndex:(NSInteger) index{
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, imageView.bounds.size.width, imageView.bounds.size.height)];
+    [button setTag:index];
+    [button addTarget:self action:@selector(topStoryCoverButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [imageView addSubview:button];
+}
+
+- (void)topStoryCoverButtonClick:(id)sender {
+    NSInteger i = [sender tag];
+    NSLog(@"%ld", i);
+    NSLog(@"按钮点击了");
+}
+
 - (void)startTimer {
     _timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(changePage) userInfo:nil repeats:YES];
     NSRunLoop *mainLoop = [NSRunLoop mainRunLoop];
@@ -100,6 +111,17 @@
     
     [_topScrollView setContentOffset:offset animated:YES];
 }
+
+- (void)reSetUpUI:(NSArray <TopStoryModel *>*)topStoriesArray {
+    self.topStoriesArray = topStoriesArray;
+    for (id view in self.topScrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    [self setScrollview];
+    [self setPageControl];
+    
+}
+
 #pragma mark - LazyLoad
 - (UIScrollView *)topScrollView {
     if (!_topScrollView) {
@@ -113,6 +135,13 @@
         _topPageControl = [[UIPageControl alloc] init];
     }
     return _topPageControl;
+}
+
+- (NSArray <TopStoryModel *> *)topStoriesArray {
+    if (!_topStoriesArray) {
+        _topStoriesArray = [[NSArray alloc] init];
+    }
+    return _topStoriesArray;
 }
 
 #pragma mark - UIScrollView Delegate

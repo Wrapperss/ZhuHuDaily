@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "StoryDetailModel.h"
+#import <WebKit/WebKit.h>
 
 @interface StoryViewController : UIViewController
 

@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self loadStoryMessage];
     [self setUpStoryWebView];
-    [self setFakeNavigationBar];
+    //[self setFakeNavigationBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +39,8 @@
     NSString *OneStoryDeltailUrl = [OneStoryDeltailApi stringByAppendingString:self.storyId];
     [[NetworkTool sharedNetworkTool] loadDataInfo:OneStoryDeltailUrl parameters:nil success:^(id  _Nullable responseObject) {
         self.storyDetail = [StoryDetailModel mj_objectWithKeyValues:responseObject];
-        [self.storyWebView loadHTMLString:_storyDetail.body baseURL:nil];
+        [self.storyWebView loadHTMLString:[NSString stringWithFormat:@"%@<link rel=\"stylesheet\" type=\"text/css\" href=\"%@\">", _storyDetail.body, _storyDetail.css[0]] baseURL:[NSURL URLWithString:_storyDetail.css[0]]];
+        
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -77,6 +78,9 @@
 }
 
 - (void)setUpStoryWebView {
+    self.storyWebView.scalesPageToFit = NO;
     [self.view addSubview:self.storyWebView];
 }
+
+
 @end

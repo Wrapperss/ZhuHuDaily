@@ -7,12 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopStoryModel.h"
 
+@protocol TopStoryViewDelegate <NSObject>
+
+- (void)showTopStoryDetail;
+
+@end
 @interface TopStoryView : UIView
 
 @property (nonatomic, retain) UIScrollView *topScrollView;
 @property (nonatomic, retain) UIPageControl *topPageControl;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, retain) NSArray <TopStoryModel *> *topStoriesArray;
 
-- (id)initWithFrame:(CGRect)frame TopStoryArray:(NSArray *)storyArray;
+@property (nonatomic, retain) id<TopStoryViewDelegate> delegate;
+- (void)reSetUpUI:(NSArray <TopStoryModel *>*)topStoriesArray;
+- (void)setUpUI;
 @end

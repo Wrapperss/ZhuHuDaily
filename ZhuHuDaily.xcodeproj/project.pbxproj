@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F054CE01E894BEB003D5B77 /* TopStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F054CDF1E894BEB003D5B77 /* TopStoryModel.m */; };
 		9F5F77751E88A68E00824FD0 /* StoryDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F77741E88A68E00824FD0 /* StoryDetailModel.m */; };
 		9F6923E21E84BD4C00F1FF6A /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6923E11E84BD4C00F1FF6A /* StoryViewController.m */; };
 		9F6923E61E84D1E800F1FF6A /* ZhuHuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6923E51E84D1E800F1FF6A /* ZhuHuNavigationController.m */; };
@@ -104,6 +105,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F054CDE1E894BEB003D5B77 /* TopStoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopStoryModel.h; sourceTree = "<group>"; };
+		9F054CDF1E894BEB003D5B77 /* TopStoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopStoryModel.m; sourceTree = "<group>"; };
 		9F5F77731E88A68E00824FD0 /* StoryDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDetailModel.h; sourceTree = "<group>"; };
 		9F5F77741E88A68E00824FD0 /* StoryDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDetailModel.m; sourceTree = "<group>"; };
 		9F6923E01E84BD4C00F1FF6A /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
@@ -437,6 +440,8 @@
 				9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */,
 				9F5F77731E88A68E00824FD0 /* StoryDetailModel.h */,
 				9F5F77741E88A68E00824FD0 /* StoryDetailModel.m */,
+				9F054CDE1E894BEB003D5B77 /* TopStoryModel.h */,
+				9F054CDF1E894BEB003D5B77 /* TopStoryModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -805,6 +810,7 @@
 				9FF907CA1E82B1EE00774312 /* MJExtensionConst.m in Sources */,
 				9FE85AAB1E84A31C008C8592 /* DateTool.m in Sources */,
 				9FF907CD1E82B1EE00774312 /* MJPropertyKey.m in Sources */,
+				9F054CE01E894BEB003D5B77 /* TopStoryModel.m in Sources */,
 				9FADFCFC1E82690E00FF52E9 /* NetworkTool.m in Sources */,
 				9FF9080D1E82BCE500774312 /* UIImage+MultiFormat.m in Sources */,
 				9FF9080F1E82BCE500774312 /* UIImageView+HighlightedWebCache.m in Sources */,
