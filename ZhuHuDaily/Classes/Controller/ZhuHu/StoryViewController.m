@@ -7,6 +7,7 @@
 //
 
 #import "StoryViewController.h"
+#import "StoryCoverView.h"
 
 @interface StoryViewController ()
 
@@ -41,6 +42,8 @@
         self.storyDetail = [StoryDetailModel mj_objectWithKeyValues:responseObject];
         [self.storyWebView loadHTMLString:[NSString stringWithFormat:@"%@<link rel=\"stylesheet\" type=\"text/css\" href=\"%@\">", _storyDetail.body, _storyDetail.css[0]] baseURL:[NSURL URLWithString:_storyDetail.css[0]]];
         
+        StoryCoverView *storyCover = [[StoryCoverView alloc] initWithFrame:CGRectMake(0, -25, AppWidth, 0.35 * AppHeight) StoryDetail:self.storyDetail];
+        [self.storyWebView.scrollView addSubview:storyCover];
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -48,7 +51,8 @@
 #pragma mark - Lazy 
 - (UIWebView *)storyWebView {
     if (!_storyWebView) {
-        _storyWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, AppWidth, AppHeight)];
+        _storyWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, -25, AppWidth, AppHeight + 25)];
+        _storyWebView.backgroundColor = [UIColor whiteColor];
     }
     return _storyWebView;
 }

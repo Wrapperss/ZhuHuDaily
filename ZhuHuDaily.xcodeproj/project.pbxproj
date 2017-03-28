@@ -11,6 +11,7 @@
 		9F5F77751E88A68E00824FD0 /* StoryDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F77741E88A68E00824FD0 /* StoryDetailModel.m */; };
 		9F6923E21E84BD4C00F1FF6A /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6923E11E84BD4C00F1FF6A /* StoryViewController.m */; };
 		9F6923E61E84D1E800F1FF6A /* ZhuHuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6923E51E84D1E800F1FF6A /* ZhuHuNavigationController.m */; };
+		9F859C411E8A9A39006C9E94 /* StoryCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F859C401E8A9A39006C9E94 /* StoryCoverView.m */; };
 		9F9EE2D61E83A8FB007722DA /* DateSectioinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */; };
 		9FADFCA91E825ADA00FF52E9 /* ZhuHuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCA81E825ADA00FF52E9 /* ZhuHuViewController.m */; };
 		9FADFCB41E825D1400FF52E9 /* ZYWMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCAF1E825D1400FF52E9 /* ZYWMenuButton.m */; };
@@ -113,6 +114,8 @@
 		9F6923E11E84BD4C00F1FF6A /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
 		9F6923E41E84D1E800F1FF6A /* ZhuHuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuHuNavigationController.h; sourceTree = "<group>"; };
 		9F6923E51E84D1E800F1FF6A /* ZhuHuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuHuNavigationController.m; sourceTree = "<group>"; };
+		9F859C3F1E8A9A39006C9E94 /* StoryCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryCoverView.h; sourceTree = "<group>"; };
+		9F859C401E8A9A39006C9E94 /* StoryCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryCoverView.m; sourceTree = "<group>"; };
 		9F9EE2D41E83A8FB007722DA /* DateSectioinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSectioinView.h; sourceTree = "<group>"; };
 		9F9EE2D51E83A8FB007722DA /* DateSectioinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSectioinView.m; sourceTree = "<group>"; };
 		9FADFCA71E825ADA00FF52E9 /* ZhuHuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuHuViewController.h; sourceTree = "<group>"; };
@@ -611,6 +614,8 @@
 				9FF8FF321E8154410060818D /* StoryCell.xib */,
 				9FD08D051E8365DF008B5F69 /* TopStoryView.h */,
 				9FD08D061E8365DF008B5F69 /* TopStoryView.m */,
+				9F859C3F1E8A9A39006C9E94 /* StoryCoverView.h */,
+				9F859C401E8A9A39006C9E94 /* StoryCoverView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -811,6 +816,7 @@
 				9FE85AAB1E84A31C008C8592 /* DateTool.m in Sources */,
 				9FF907CD1E82B1EE00774312 /* MJPropertyKey.m in Sources */,
 				9F054CE01E894BEB003D5B77 /* TopStoryModel.m in Sources */,
+				9F859C411E8A9A39006C9E94 /* StoryCoverView.m in Sources */,
 				9FADFCFC1E82690E00FF52E9 /* NetworkTool.m in Sources */,
 				9FF9080D1E82BCE500774312 /* UIImage+MultiFormat.m in Sources */,
 				9FF9080F1E82BCE500774312 /* UIImageView+HighlightedWebCache.m in Sources */,

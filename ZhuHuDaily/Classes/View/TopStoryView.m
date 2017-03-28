@@ -20,7 +20,7 @@
     [self setScrollview];
     [self setPageControl];
     [self startTimer];
-    [self.delegate showTopStoryDetail];
+    //[self.delegate showTopStoryDetail];
 }
 - (void)setScrollview {
     self.topScrollView.frame = self.bounds;
