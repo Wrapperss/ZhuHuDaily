@@ -13,9 +13,12 @@
 #import "DateSectioinView.h"
 #import "StoryViewController.h"
 
-@interface ZhuHuViewController ()<TopStoryViewDelegate>
+#define NAVBAR_CHANGE_POINT 50
+
+@interface ZhuHuViewController ()<TopStoryViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong)TopStoryView *topStoryView;
+@property (nonatomic, retain)UITableView *tableView;
 
 @end
 
@@ -27,6 +30,18 @@
     [self setRefresh];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self scrollViewDidScroll:self.tableView];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar lt_reset];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -39,19 +54,50 @@
 #pragma mark - UI
 - (void)setUpUI {
     [self setNav];
+    [self setTableView];
     [self setTableviewHeadView];
 }
 - (void)setNav {
-    self.navigationController.navigationBar.barTintColor = ZhuHuColor;
-    self.navigationController.navigationBar.translucent = NO;
-    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
-    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
 }
-
+- (void)setTableView {
+    [self.view addSubview:self.tableView];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+}
 - (void)setTableviewHeadView {
     self.tableView.tableHeaderView = self.topStoryView;
 }
-#pragma mark - Refresh 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //navigationBar
+    UIColor * color = ZhuHuColor;
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > NAVBAR_CHANGE_POINT) {
+        CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
+    } else {
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+    }
+    
+    //title
+    if (self.tableView.contentOffset.y > TopStoriesHeight - 64 + self.storiesArray.count * 80) {
+        self.title = @"2017年3月28号";
+    }
+    else {
+        if (self.tableView.contentOffset.y > TopStoriesHeight - 64) {
+            self.title = @"2017年3月29号";
+        }
+        else {
+            self.title = @"纸糊日报";
+        }
+    }
+}
+
+
+#pragma mark - Refresh
 - (void)setRefresh {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadLastStory];
@@ -138,6 +184,14 @@
     }
     return _topStoryView;
 }
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, AppWidth, AppHeight + 64) style:UITableViewStylePlain];
+        _tableView.showsVerticalScrollIndicator = NO;
+    }
+    return _tableView;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -206,6 +260,7 @@
     }
     
     [self.navigationController pushViewController:storyViewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 //设置tableViewCell分割线上下去边线，中间缩进
@@ -223,6 +278,8 @@
         
     }
 }
+
+
 /*
  Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -17,10 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationBar.barTintColor = ZhuHuColor;
-    self.navigationBar.translucent = NO;
-    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
-    [self.navigationBar setTitleTextAttributes:attributes];
+//    UIImage *image = [[UIImage alloc] init];
+//    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+//    self.navigationBar.barTintColor = ZhuHuColor;
+//    self.navigationBar.translucent = NO;
+//    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
+//    [self.navigationBar setTitleTextAttributes:attributes];
 
 }
 
@@ -33,6 +35,7 @@
     if (self.viewControllers.count == 0) {
         [super pushViewController:viewController animated:animated];
         self.navigationBar.hidden = NO;
+        //self.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
         return;
     }
     [super pushViewController:viewController animated:animated];

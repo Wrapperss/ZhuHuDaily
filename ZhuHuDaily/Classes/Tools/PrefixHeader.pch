@@ -21,7 +21,7 @@
 #define AppWidth AppScreen.size.width
 #define AppHeight AppScreen.size.height
 #define TopStoriesHeight AppWidth/16*9
-#define ZhuHuColor [UIColor colorWithRed:65/255.0 green:172/255.0 blue:245/255.0 alpha:1]
+#define ZhuHuColor [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1]
 #import "Masonry.h"
 #import "MJRefresh.h"
 #import "NetworkTool.h"
@@ -29,5 +29,6 @@
 #import "SVProgressHUD.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
+#import "UINavigationBar+Awesome.h"
 
 #endif /* PrefixHeader_pch */

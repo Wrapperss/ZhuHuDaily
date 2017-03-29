@@ -41,6 +41,7 @@
 		9FADFD001E826A3F00FF52E9 /* StoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */; };
 		9FD08D071E8365DF008B5F69 /* TopStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD08D061E8365DF008B5F69 /* TopStoryView.m */; };
 		9FE85AAB1E84A31C008C8592 /* DateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE85AAA1E84A31C008C8592 /* DateTool.m */; };
+		9FF0896A1E8B8A20004DB82F /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF089691E8B8A20004DB82F /* UINavigationBar+Awesome.m */; };
 		9FF8FE871E8150890060818D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE861E8150890060818D /* main.m */; };
 		9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE891E8150890060818D /* AppDelegate.m */; };
 		9FF8FE901E8150890060818D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF8FE8E1E8150890060818D /* Main.storyboard */; };
@@ -174,6 +175,8 @@
 		9FD08D061E8365DF008B5F69 /* TopStoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopStoryView.m; sourceTree = "<group>"; };
 		9FE85AA91E84A31C008C8592 /* DateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTool.h; sourceTree = "<group>"; };
 		9FE85AAA1E84A31C008C8592 /* DateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTool.m; sourceTree = "<group>"; };
+		9FF089681E8B8A20004DB82F /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		9FF089691E8B8A20004DB82F /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		9FF8FE821E8150890060818D /* ZhuHuDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhuHuDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF8FE861E8150890060818D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FF8FE881E8150890060818D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -586,6 +589,8 @@
 		9FF8FF271E81516F0060818D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9FF089681E8B8A20004DB82F /* UINavigationBar+Awesome.h */,
+				9FF089691E8B8A20004DB82F /* UINavigationBar+Awesome.m */,
 				9FE85AA91E84A31C008C8592 /* DateTool.h */,
 				9FE85AAA1E84A31C008C8592 /* DateTool.m */,
 				9FADFCFA1E82690E00FF52E9 /* NetworkTool.h */,
@@ -826,6 +831,7 @@
 				9FADFCF71E82668E00FF52E9 /* UIScrollView+MJExtension.m in Sources */,
 				9FF908051E82BCE500774312 /* SDWebImageCompat.m in Sources */,
 				9FF907CE1E82B1EE00774312 /* MJPropertyType.m in Sources */,
+				9FF0896A1E8B8A20004DB82F /* UINavigationBar+Awesome.m in Sources */,
 				9FF907D31E82B1EE00774312 /* NSString+MJExtension.m in Sources */,
 				9FF908041E82BCE500774312 /* SDImageCacheConfig.m in Sources */,
 				9FF8FED21E8150CD0060818D /* AFNetworkReachabilityManager.m in Sources */,

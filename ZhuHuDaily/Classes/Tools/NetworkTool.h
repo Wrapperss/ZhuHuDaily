@@ -10,7 +10,7 @@
 
 @interface NetworkTool : NSObject<NSCopying>
 
-+ (instancetype)sharedNetworkTool;
++ (_Nonnull instancetype)sharedNetworkTool;
 
 - (void)loadDataInfo:(nullable NSString *)URLString
           parameters:(nullable id)parameters
