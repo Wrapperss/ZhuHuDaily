@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TopStoryModel : NSObject
+@interface TopStoryModel : NSObject <NSCoding>
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *ID;

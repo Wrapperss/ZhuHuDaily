@@ -14,5 +14,16 @@
     return @{@"ID": @"id"};
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.images forKey:@"images"];
+    [aCoder encodeObject:self.ID forKey:@"ID"];
+}
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self.title = [aDecoder decodeObjectForKey:@"title"];
+    self.images = [aDecoder decodeObjectForKey:@"images"];
+    self.ID = [aDecoder decodeObjectForKey:@"ID"];
+    return self;
+}
 @end

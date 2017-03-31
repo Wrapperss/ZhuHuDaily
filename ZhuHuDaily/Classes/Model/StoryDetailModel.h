@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface StoryDetailModel : NSObject
+@interface StoryDetailModel : NSObject<NSCoding>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *image;

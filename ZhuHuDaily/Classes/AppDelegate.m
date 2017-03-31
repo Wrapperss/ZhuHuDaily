@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ZhuHuViewController.h"
-#import "ZYWMenuViewController.h"
 #include "ZhuHuNavigationController.h"
 @interface AppDelegate ()
 
@@ -20,18 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:AppScreen];
-    
     ZhuHuViewController *zhuHu = [[ZhuHuViewController alloc] init];
     zhuHu.title = @"纸糊日报";
     ZhuHuNavigationController *zhuHuNav = [[ZhuHuNavigationController alloc] initWithRootViewController:zhuHu];
-    
-    NSArray *viewControllerArray = @[zhuHuNav];
-    
-    ZYWMenuViewController *nev = [[ZYWMenuViewController alloc] initWithFrontView:zhuHuNav AndButtonTitleArr:@[@"纸糊日报"]];
-    nev.viewControllersArr = viewControllerArray;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:nev];
-    
-    [self.window setRootViewController:nav];
+    [self.window setRootViewController:zhuHuNav];
     [self.window makeKeyAndVisible];
     return YES;
 }

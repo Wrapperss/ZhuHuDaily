@@ -26,8 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpUI];
     [self setRefresh];
+    [self setUpUI];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 300, 50)];
+    label.font = [UIFont fontWithName:@"iconfont" size:35];
+    label.text = @"\U0000E900";
+    label.textColor = [UIColor redColor];
+    [self.view addSubview:label];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,6 +75,7 @@
     self.tableView.tableHeaderView = self.topStoryView;
 }
 
+#pragma mark - Scrollview from tableview delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //navigationBar
@@ -80,19 +86,6 @@
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
     } else {
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
-    }
-    
-    //title
-    if (self.tableView.contentOffset.y > TopStoriesHeight - 64 + self.storiesArray.count * 80) {
-        self.title = @"2017年3月28号";
-    }
-    else {
-        if (self.tableView.contentOffset.y > TopStoriesHeight - 64) {
-            self.title = @"2017年3月29号";
-        }
-        else {
-            self.title = @"纸糊日报";
-        }
     }
 }
 
@@ -112,46 +105,74 @@
 
 #pragma mark - LoadStory
 - (void)loadLastStory {
+    YYCache *topStoriesCache = [YYCache cacheWithName:@"TopStoriesCache"];
+    YYCache *stotriesCache = [YYCache cacheWithName:@"storiesCache"];
+    NSString *todayTitle = [[DateTool shareDateTool] transformTitleStringFromDate:[NSDate date]];
     [[NetworkTool sharedNetworkTool] loadDataInfo:LatestStoryApi parameters:nil success:^(id  _Nullable responseObject) {
         //最新故事
         for (NSDictionary *story in responseObject[@"stories"]) {
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
             [self.storiesArray addObject:storyModel];
         }
-        YYCache *yyCache = [YYCache cacheWithName:@"today"];
-        //[yyCache setObject:self.storiesArray forKey:@"today"];
-        NSLog(@"%@", [yyCache objectForKey:@"today"]);
+        [stotriesCache setObject:self.storiesArray forKey:todayTitle];
         //封面故事
         for (NSDictionary *topStory in responseObject[@"top_stories"]) {
             TopStoryModel *topStoryModel = [TopStoryModel mj_objectWithKeyValues:topStory];
             [self.topStoriesArray addObject:topStoryModel];
         }
         [self.topStoryView reSetUpUI:self.topStoriesArray];
+        [topStoriesCache setObject:self.topStoriesArray forKey:@"topStories"];
+        
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     } failure:^(NSError * _Nullable error) {
-        [SVProgressHUD showErrorWithStatus:@"记载失败～"];
+        
+        if ([stotriesCache containsObjectForKey:todayTitle]) {
+            [SVProgressHUD showErrorWithStatus:@"刷新失败～"];
+            self.storiesArray = (NSMutableArray<StoryModel *> *)[stotriesCache objectForKey:todayTitle];
+            [self.tableView reloadData];
+        }
+        else {
+            [SVProgressHUD showErrorWithStatus:@"加载失败～"];
+            [self loadBeforeStory];
+        }
+        self.topStoriesArray = (NSMutableArray<TopStoryModel *> *)[topStoriesCache objectForKey:@"topStories"];
+        [self.topStoryView reSetUpUI:self.topStoriesArray];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }];
 }
 
 - (void)loadBeforeStory {
-    NSString *completeBeforeStoryUrl = [[NSString stringWithFormat:BeforeStoryApi] stringByAppendingString:[[DateTool shareDateTool] transformUrlStringFromDate:self.date]];
+    YYCache *stotriesCache = [YYCache cacheWithName:@"storiesCache"];
     
-    [[NetworkTool sharedNetworkTool] loadDataInfo:completeBeforeStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
-        self.date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:_date];
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (NSDictionary *story in responseObject[@"stories"]) {
-            StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
-            [array addObject:storyModel];
-        }
-        [self.beforeStoriesArray addObject:array];
+    NSString *completeBeforeStoryUrl = [[NSString stringWithFormat:BeforeStoryApi] stringByAppendingString:[[DateTool shareDateTool] transformUrlStringFromDate:self.date]];
+    self.date = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:_date];
+    
+    //缓存中存在
+    if ([stotriesCache containsObjectForKey:[[DateTool shareDateTool] transformTitleStringFromDate:self.date]]) {
+        [self.beforeStoriesArray addObject:(NSMutableArray<StoryModel *> *)[stotriesCache objectForKey:[[DateTool shareDateTool] transformTitleStringFromDate:self.date]]];
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
-    } failure:^(NSError * _Nullable error) {
-        
-    }];
+    }
+    //缓存中不存在
+    else {
+        [[NetworkTool sharedNetworkTool] loadDataInfo:completeBeforeStoryUrl parameters:nil success:^(id  _Nullable responseObject) {
+            NSMutableArray<StoryModel *> *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *story in responseObject[@"stories"]) {
+                StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
+                [array addObject:storyModel];
+            }
+            [stotriesCache setObject:array forKey:[[DateTool shareDateTool] transformTitleStringFromDate:self.date]];
+            
+            [self.beforeStoriesArray addObject:array];
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+        } failure:^(NSError * _Nullable error) {
+            [SVProgressHUD showErrorWithStatus:@"加载失败"];
+            [self.tableView.mj_footer endRefreshing];
+        }];
+    }
 }
 
 #pragma mark - LazyLoad
@@ -210,7 +231,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         if (_storiesArray.count == 0) {
-            return 10;
+            return 0;
         }
         else {
             return _storiesArray.count;
@@ -260,7 +281,7 @@
         storyViewController = [[StoryViewController alloc] initWithStoryId:self.storiesArray[indexPath.row].ID];
     }
     else {
-        storyViewController = [[StoryViewController alloc] initWithStoryId:self.beforeStoriesArray[indexPath.section][indexPath.row].ID];
+        storyViewController = [[StoryViewController alloc] initWithStoryId:self.beforeStoriesArray[indexPath.section-1][indexPath.row].ID];
     }
     
     [self.navigationController pushViewController:storyViewController animated:YES];

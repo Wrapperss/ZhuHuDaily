@@ -16,19 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    UIImage *image = [[UIImage alloc] init];
-//    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-//    self.navigationBar.barTintColor = ZhuHuColor;
-//    self.navigationBar.translucent = NO;
-//    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
-//    [self.navigationBar setTitleTextAttributes:attributes];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -48,5 +39,6 @@
     }
     return [super popViewControllerAnimated:animated];
 }
+
 
 @end

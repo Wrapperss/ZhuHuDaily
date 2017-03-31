@@ -26,7 +26,10 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self loadStoryMessage];
     [self setUpStoryWebView];
-    //[self setFakeNavigationBar];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeBackAction:)];
+    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.storyWebView addGestureRecognizer:swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,20 +40,32 @@
 
 #pragma mark - loadMessage
 - (void)loadStoryMessage {
+    YYCache *storyDetailCache = [YYCache cacheWithName:@"storyDetail"];
     NSString *OneStoryDeltailUrl = [OneStoryDeltailApi stringByAppendingString:self.storyId];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD showWithStatus:@"加载中～"];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    [[NetworkTool sharedNetworkTool] loadDataInfo:OneStoryDeltailUrl parameters:nil success:^(id  _Nullable responseObject) {
-        self.storyDetail = [StoryDetailModel mj_objectWithKeyValues:responseObject];
+    if ([storyDetailCache containsObjectForKey:self.storyId]) {
+        self.storyDetail = (StoryDetailModel *)[storyDetailCache objectForKey:self.storyId];
         [self.storyWebView loadHTMLString:[NSString stringWithFormat:@"%@<link rel=\"stylesheet\" type=\"text/css\" href=\"%@\">", _storyDetail.body, _storyDetail.css[0]] baseURL:[NSURL URLWithString:_storyDetail.css[0]]];
         
         StoryCoverView *storyCover = [[StoryCoverView alloc] initWithFrame:CGRectMake(0, -25, AppWidth, 0.35 * AppHeight) StoryDetail:self.storyDetail];
         [self.storyWebView.scrollView addSubview:storyCover];
         [SVProgressHUD dismiss];
-    } failure:^(NSError * _Nullable error) {
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
-    }];
+    }
+    else {
+        [[NetworkTool sharedNetworkTool] loadDataInfo:OneStoryDeltailUrl parameters:nil success:^(id  _Nullable responseObject) {
+            self.storyDetail = [StoryDetailModel mj_objectWithKeyValues:responseObject];
+            [self.storyWebView loadHTMLString:[NSString stringWithFormat:@"%@<link rel=\"stylesheet\" type=\"text/css\" href=\"%@\">", _storyDetail.body, _storyDetail.css[0]] baseURL:[NSURL URLWithString:_storyDetail.css[0]]];
+            
+            StoryCoverView *storyCover = [[StoryCoverView alloc] initWithFrame:CGRectMake(0, -25, AppWidth, 0.35 * AppHeight) StoryDetail:self.storyDetail];
+            [self.storyWebView.scrollView addSubview:storyCover];
+            [storyDetailCache setObject:self.storyDetail forKey:self.storyId];
+            [SVProgressHUD dismiss];
+        } failure:^(NSError * _Nullable error) {
+            [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        }];
+    }
 }
 #pragma mark - Lazy 
 - (UIWebView *)storyWebView {
@@ -68,23 +83,9 @@
     return _fakeNavigationBar;
 }
 #pragma mark - UI
-- (void)setFakeNavigationBar {
-    self.fakeNavigationBar.backgroundColor = ZhuHuColor;
-    [self.view addSubview:_fakeNavigationBar];
-    [self setBackButton];
-}
-- (void)setBackButton {
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 30, 50, 30)];
-    [backButton setTitle:@"返回" forState:UIControlStateNormal];
-    backButton.titleLabel.font = [UIFont systemFontOfSize:17];
-    [backButton addTarget:self action:@selector(backButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    backButton.tintColor = [UIColor whiteColor];
-    [self.fakeNavigationBar addSubview:backButton];
-}
-- (void)backButtonClick {
+- (void)swipeBackAction:(UISwipeGestureRecognizer *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 - (void)setUpStoryWebView {
     self.storyWebView.scalesPageToFit = NO;
     [self.view addSubview:self.storyWebView];

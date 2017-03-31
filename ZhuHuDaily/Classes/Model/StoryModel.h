@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface StoryModel : NSObject
+@interface StoryModel : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, retain) NSArray *images;
