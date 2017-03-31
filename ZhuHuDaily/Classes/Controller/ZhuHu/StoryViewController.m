@@ -38,14 +38,18 @@
 #pragma mark - loadMessage
 - (void)loadStoryMessage {
     NSString *OneStoryDeltailUrl = [OneStoryDeltailApi stringByAppendingString:self.storyId];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"加载中～"];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [[NetworkTool sharedNetworkTool] loadDataInfo:OneStoryDeltailUrl parameters:nil success:^(id  _Nullable responseObject) {
         self.storyDetail = [StoryDetailModel mj_objectWithKeyValues:responseObject];
         [self.storyWebView loadHTMLString:[NSString stringWithFormat:@"%@<link rel=\"stylesheet\" type=\"text/css\" href=\"%@\">", _storyDetail.body, _storyDetail.css[0]] baseURL:[NSURL URLWithString:_storyDetail.css[0]]];
         
         StoryCoverView *storyCover = [[StoryCoverView alloc] initWithFrame:CGRectMake(0, -25, AppWidth, 0.35 * AppHeight) StoryDetail:self.storyDetail];
         [self.storyWebView.scrollView addSubview:storyCover];
+        [SVProgressHUD dismiss];
     } failure:^(NSError * _Nullable error) {
-        
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 #pragma mark - Lazy 

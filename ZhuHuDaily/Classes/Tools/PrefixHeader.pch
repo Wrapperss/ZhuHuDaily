@@ -29,6 +29,8 @@
 #import "SVProgressHUD.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
+#import "YYCache.h"
 #import "UINavigationBar+Awesome.h"
+#import <sqlite3.h>
 
 #endif /* PrefixHeader_pch */

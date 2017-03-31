@@ -56,13 +56,13 @@ static id _instance;
     
     [[AFHTTPSessionManager manager] GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // 回调成功之后的block
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        [SVProgressHUD showSuccessWithStatus:@"获取数据成功"];
+        //[SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        //[SVProgressHUD showSuccessWithStatus:@"获取数据成功"];
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // 回调失败之后的block
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        [SVProgressHUD showSuccessWithStatus:@"获取数据失败"];
+        //[SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        //[SVProgressHUD showSuccessWithStatus:@"获取数据失败"];
         failure(error);
     }];
     

@@ -118,7 +118,9 @@
             StoryModel *storyModel = [StoryModel mj_objectWithKeyValues:story];
             [self.storiesArray addObject:storyModel];
         }
-        
+        YYCache *yyCache = [YYCache cacheWithName:@"today"];
+        //[yyCache setObject:self.storiesArray forKey:@"today"];
+        NSLog(@"%@", [yyCache objectForKey:@"today"]);
         //封面故事
         for (NSDictionary *topStory in responseObject[@"top_stories"]) {
             TopStoryModel *topStoryModel = [TopStoryModel mj_objectWithKeyValues:topStory];
@@ -128,7 +130,9 @@
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     } failure:^(NSError * _Nullable error) {
-
+        [SVProgressHUD showErrorWithStatus:@"记载失败～"];
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 

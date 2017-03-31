@@ -41,6 +41,11 @@
 		9FADFD001E826A3F00FF52E9 /* StoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FADFCFF1E826A3F00FF52E9 /* StoryModel.m */; };
 		9FD08D071E8365DF008B5F69 /* TopStoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD08D061E8365DF008B5F69 /* TopStoryView.m */; };
 		9FE85AAB1E84A31C008C8592 /* DateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE85AAA1E84A31C008C8592 /* DateTool.m */; };
+		9FED3BEB1E8C8C6500259812 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED3BE41E8C8C6500259812 /* YYCache.m */; };
+		9FED3BEC1E8C8C6500259812 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED3BE61E8C8C6500259812 /* YYDiskCache.m */; };
+		9FED3BED1E8C8C6500259812 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED3BE81E8C8C6500259812 /* YYKVStorage.m */; };
+		9FED3BEE1E8C8C6500259812 /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED3BEA1E8C8C6500259812 /* YYMemoryCache.m */; };
+		9FED3BF11E8C8EA400259812 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED3BF01E8C8EA400259812 /* libsqlite3.tbd */; };
 		9FF0896A1E8B8A20004DB82F /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF089691E8B8A20004DB82F /* UINavigationBar+Awesome.m */; };
 		9FF8FE871E8150890060818D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE861E8150890060818D /* main.m */; };
 		9FF8FE8A1E8150890060818D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8FE891E8150890060818D /* AppDelegate.m */; };
@@ -175,6 +180,15 @@
 		9FD08D061E8365DF008B5F69 /* TopStoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopStoryView.m; sourceTree = "<group>"; };
 		9FE85AA91E84A31C008C8592 /* DateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTool.h; sourceTree = "<group>"; };
 		9FE85AAA1E84A31C008C8592 /* DateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTool.m; sourceTree = "<group>"; };
+		9FED3BE31E8C8C6500259812 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
+		9FED3BE41E8C8C6500259812 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
+		9FED3BE51E8C8C6500259812 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
+		9FED3BE61E8C8C6500259812 /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
+		9FED3BE71E8C8C6500259812 /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
+		9FED3BE81E8C8C6500259812 /* YYKVStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKVStorage.m; sourceTree = "<group>"; };
+		9FED3BE91E8C8C6500259812 /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
+		9FED3BEA1E8C8C6500259812 /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
+		9FED3BF01E8C8EA400259812 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9FF089681E8B8A20004DB82F /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		9FF089691E8B8A20004DB82F /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		9FF8FE821E8150890060818D /* ZhuHuDaily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhuHuDaily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,6 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FED3BF11E8C8EA400259812 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,11 +467,35 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9FED3BE21E8C8C6500259812 /* YYCache */ = {
+			isa = PBXGroup;
+			children = (
+				9FED3BE31E8C8C6500259812 /* YYCache.h */,
+				9FED3BE41E8C8C6500259812 /* YYCache.m */,
+				9FED3BE51E8C8C6500259812 /* YYDiskCache.h */,
+				9FED3BE61E8C8C6500259812 /* YYDiskCache.m */,
+				9FED3BE71E8C8C6500259812 /* YYKVStorage.h */,
+				9FED3BE81E8C8C6500259812 /* YYKVStorage.m */,
+				9FED3BE91E8C8C6500259812 /* YYMemoryCache.h */,
+				9FED3BEA1E8C8C6500259812 /* YYMemoryCache.m */,
+			);
+			path = YYCache;
+			sourceTree = "<group>";
+		};
+		9FED3BEF1E8C8EA400259812 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FED3BF01E8C8EA400259812 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FF8FE791E8150890060818D = {
 			isa = PBXGroup;
 			children = (
 				9FF8FE841E8150890060818D /* ZhuHuDaily */,
 				9FF8FE831E8150890060818D /* Products */,
+				9FED3BEF1E8C8EA400259812 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -506,6 +545,7 @@
 		9FF8FE9D1E8150A90060818D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				9FED3BE21E8C8C6500259812 /* YYCache */,
 				9FF8FE9E1E8150CD0060818D /* AFNetworking */,
 				9FF908131E82BE8A00774312 /* FLAnimatedImage */,
 				9FF907B21E82B1EE00774312 /* MJExtension */,
@@ -807,12 +847,14 @@
 				9FADFCED1E82668E00FF52E9 /* MJRefreshAutoStateFooter.m in Sources */,
 				9FF908191E82BE8A00774312 /* FLAnimatedImage.m in Sources */,
 				9FADFCF91E82668E00FF52E9 /* UIView+MJExtension.m in Sources */,
+				9FED3BED1E8C8C6500259812 /* YYKVStorage.m in Sources */,
 				9F6923E21E84BD4C00F1FF6A /* StoryViewController.m in Sources */,
 				9FF908011E82BCE500774312 /* NSData+ImageContentType.m in Sources */,
 				9FF8FED61E8150CD0060818D /* AFURLSessionManager.m in Sources */,
 				9FADFCE81E82668E00FF52E9 /* MJRefreshComponent.m in Sources */,
 				9FADFCE91E82668E00FF52E9 /* MJRefreshFooter.m in Sources */,
 				9FF908101E82BCE500774312 /* UIImageView+WebCache.m in Sources */,
+				9FED3BEB1E8C8C6500259812 /* YYCache.m in Sources */,
 				9FF907CC1E82B1EE00774312 /* MJProperty.m in Sources */,
 				9FF907FF1E82BCE500774312 /* FLAnimatedImageView+WebCache.m in Sources */,
 				9FF8FEDB1E8150CD0060818D /* MASViewAttribute.m in Sources */,
@@ -843,6 +885,7 @@
 				9FD08D071E8365DF008B5F69 /* TopStoryView.m in Sources */,
 				9FF8FEE51E8150CD0060818D /* SVRadialGradientLayer.m in Sources */,
 				9FADFCF31E82668E00FF52E9 /* MJRefreshStateHeader.m in Sources */,
+				9FED3BEE1E8C8C6500259812 /* YYMemoryCache.m in Sources */,
 				9FF8FEDF1E8150CD0060818D /* View+MASAdditions.m in Sources */,
 				9FADFCEF1E82668E00FF52E9 /* MJRefreshBackNormalFooter.m in Sources */,
 				9FF907D11E82B1EE00774312 /* NSObject+MJKeyValue.m in Sources */,
@@ -862,6 +905,7 @@
 				9FF8FEDD1E8150CD0060818D /* NSArray+MASAdditions.m in Sources */,
 				9FF8FEE11E8150CD0060818D /* SVIndefiniteAnimatedView.m in Sources */,
 				9FADFCA91E825ADA00FF52E9 /* ZhuHuViewController.m in Sources */,
+				9FED3BEC1E8C8C6500259812 /* YYDiskCache.m in Sources */,
 				9F5F77751E88A68E00824FD0 /* StoryDetailModel.m in Sources */,
 				9FF9080B1E82BCE500774312 /* UIButton+WebCache.m in Sources */,
 				9FF9080E1E82BCE500774312 /* UIImage+WebP.m in Sources */,
