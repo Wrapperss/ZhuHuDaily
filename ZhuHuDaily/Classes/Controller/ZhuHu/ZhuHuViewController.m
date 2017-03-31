@@ -28,11 +28,6 @@
     [super viewDidLoad];
     [self setRefresh];
     [self setUpUI];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 300, 50)];
-    label.font = [UIFont fontWithName:@"iconfont" size:35];
-    label.text = @"\U0000E900";
-    label.textColor = [UIColor redColor];
-    [self.view addSubview:label];
 }
 
 - (void)viewWillAppear:(BOOL)animated
