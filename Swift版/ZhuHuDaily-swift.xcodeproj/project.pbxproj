@@ -113,7 +113,6 @@
 				9FE645C61E95CDE5005672D2 /* View */,
 				9FB12C0C1E95CC2B004812BB /* AppDelegate.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -123,7 +122,6 @@
 				9FE645C91E95CE49005672D2 /* MainViewController.swift */,
 				9FE645CB1E95D3AF005672D2 /* NavigationController.swift */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -132,7 +130,6 @@
 			children = (
 				9F4DC0B31E9B375A00200192 /* StoryModel.swift */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -142,7 +139,6 @@
 				9FD9C7171E976C150040821A /* StoryViewCell.swift */,
 				9FD9C7181E976C150040821A /* StoryViewCell.xib */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -153,7 +149,6 @@
 				9F5ABFE31E95E4640063C8F8 /* PrefixHeader.swift */,
 				9FE645CF1E95DF0D005672D2 /* ZhuHuDaily-Brdging-Header.h */,
 			);
-			name = Tools;
 			path = Tools;
 			sourceTree = "<group>";
 		};
@@ -421,7 +416,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wrappers.ZhuHuDaily-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Wrappers/git/ZhuHuDaily-master/Swift版/ZhuHuDaily-swift/ZhuHuDaily-Brdging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Wrappers/git/ZhuHuDaily-master/Swift版/ZhuHuDaily-swift/Classes/Tools/ZhuHuDaily-Brdging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -438,7 +433,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wrappers.ZhuHuDaily-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Wrappers/git/ZhuHuDaily-master/Swift版/ZhuHuDaily-swift/ZhuHuDaily-Brdging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Wrappers/git/ZhuHuDaily-master/Swift版/ZhuHuDaily-swift/Classes/Tools/ZhuHuDaily-Brdging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
