@@ -14,7 +14,7 @@ class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.barTintColor = ZHI_HU_COLOR
+        //self.navigationBar.barTintColor = ZHI_HU_COLOR
         // Do any additional setup after loading the view.
     }
 

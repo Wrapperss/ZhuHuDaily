@@ -14,12 +14,20 @@ import SwiftyJSON
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView = UITableView()
+    var headView = StoryRotateView()
+    
+    var storyArray = [StoryModel]()
+    var topStoryArray = [TopStoryModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+        self.loadStory()
         self.setTableView()
         self.setNav()
         self.setRefresh()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,33 +42,48 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setTableView() -> Void {
-        self.tableView.frame = CGRect.init(x: 0, y: -50, width: APP_WIDTH, height: APP_HEIGHT + 50)
+        self.tableView.frame = CGRect.init(x: 0, y: -22, width: APP_WIDTH, height: APP_HEIGHT + 22)
         self.tableView.register(UINib.init(nibName: "StoryViewCell", bundle: nil), forCellReuseIdentifier: "storyCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.setHeadView()
         self.view.addSubview(tableView)
+    }
+    
+    func setHeadView() -> Void {
+        headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
+        self.tableView.tableHeaderView = headView
     }
     
     // MARK: - Refresh
     func setRefresh() -> Void {
         self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
             self.loadStory()
+            self.tableView.mj_header.endRefreshing()
         })
-        self.tableView.mj_header.beginRefreshing()
-        self.tableView.mj_header.endRefreshing()
     }
     
     // MARK: - LoadStory
     func loadStory() -> Void {
         NetworkTool.shared.loadDateInfo(urlString: LATEST_STORY_API, params: ["":""], success: { (responseObject) in
-            print("成功")
-            if let storyArray = responseObject["stories"] {
-                for story in storyArray as! Array<Any> {
-                    let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
-                    print(storyModel.title)
+            
+            //最新故事
+            for story in responseObject["stories"] as! Array<Any> {
+                let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
+                if !self.storyArray.contains(storyModel) {
+                    self.storyArray.append(storyModel)
                 }
             }
             
+            //封面故事
+            for topStory in responseObject["top_stories"] as! Array<Any> {
+                let topStoryModel: TopStoryModel = TopStoryModel.mj_object(withKeyValues: topStory)
+                if !self.topStoryArray.contains(topStoryModel) {
+                    self.topStoryArray.append(topStoryModel)
+                }
+            }
+            self.headView.upDateView(self.topStoryArray)
+            self.tableView.reloadData()
         }) { (error) in
             print("失败")
         }
@@ -73,7 +96,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return self.storyArray.count
     }
 
     
@@ -81,7 +104,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let identifier = "storyCell"
         let cell: StoryViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! StoryViewCell
-        
+        cell.setMessage(self.storyArray[indexPath.row])
         
         return cell
     }
@@ -89,5 +112,5 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
+    
 }

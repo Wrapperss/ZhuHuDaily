@@ -10,6 +10,8 @@
 		3C3FAF66950B64102B61D551 /* Pods_ZhuHuDaily_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0848B6FAA15C25A5C7DA6881 /* Pods_ZhuHuDaily_swift.framework */; };
 		9F2A30D91E9613F3006A8880 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2A30D81E9613F3006A8880 /* NetworkTool.swift */; };
 		9F4DC0B41E9B375A00200192 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DC0B31E9B375A00200192 /* StoryModel.swift */; };
+		9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5004841E9CF89100F73873 /* TopStoryModel.swift */; };
+		9F5004871E9CF99800F73873 /* StoryRotateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5004861E9CF99800F73873 /* StoryRotateView.swift */; };
 		9F5ABFE21E95E4000063C8F8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5ABFE11E95E4000063C8F8 /* libsqlite3.tbd */; };
 		9F5ABFE41E95E4640063C8F8 /* PrefixHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5ABFE31E95E4640063C8F8 /* PrefixHeader.swift */; };
 		9FB12C0D1E95CC2B004812BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB12C0C1E95CC2B004812BB /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 		8716639D102AC26C687FAE90 /* Pods-ZhuHuDaily-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhuHuDaily-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZhuHuDaily-swift/Pods-ZhuHuDaily-swift.release.xcconfig"; sourceTree = "<group>"; };
 		9F2A30D81E9613F3006A8880 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		9F4DC0B31E9B375A00200192 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
+		9F5004841E9CF89100F73873 /* TopStoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopStoryModel.swift; sourceTree = "<group>"; };
+		9F5004861E9CF99800F73873 /* StoryRotateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryRotateView.swift; sourceTree = "<group>"; };
 		9F5ABFE11E95E4000063C8F8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9F5ABFE31E95E4640063C8F8 /* PrefixHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixHeader.swift; sourceTree = "<group>"; };
 		9FB12C091E95CC2B004812BB /* ZhuHuDaily-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZhuHuDaily-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				9F4DC0B31E9B375A00200192 /* StoryModel.swift */,
+				9F5004841E9CF89100F73873 /* TopStoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			children = (
 				9FD9C7171E976C150040821A /* StoryViewCell.swift */,
 				9FD9C7181E976C150040821A /* StoryViewCell.xib */,
+				9F5004861E9CF99800F73873 /* StoryRotateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -277,9 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5004871E9CF99800F73873 /* StoryRotateView.swift in Sources */,
 				9F2A30D91E9613F3006A8880 /* NetworkTool.swift in Sources */,
 				9F5ABFE41E95E4640063C8F8 /* PrefixHeader.swift in Sources */,
 				9FB12C0D1E95CC2B004812BB /* AppDelegate.swift in Sources */,
+				9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */,
 				9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */,
 				9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */,
 				9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class StoryViewCell: UITableViewCell {
 
@@ -26,4 +27,14 @@ class StoryViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setMessage(_ storyModel: StoryModel) -> Void {
+        self.titleLabel.text = storyModel.title;
+        self.pictureView.sd_setImage(with: URL.init(string: storyModel.images[0]), placeholderImage: UIImage.init(named: "default_image"))
+        if storyModel.images.count == 1 {
+            self.mutilPicture.isHidden = true
+        }
+        else {
+            self.mutilPicture.isHidden = false
+        }
+    }
 }
