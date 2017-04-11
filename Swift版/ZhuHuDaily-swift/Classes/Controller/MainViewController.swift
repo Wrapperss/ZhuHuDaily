@@ -54,12 +54,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadStory() -> Void {
         NetworkTool.shared.loadDateInfo(urlString: LATEST_STORY_API, params: ["":""], success: { (responseObject) in
             print("成功")
-            print(responseObject["stories"]![0])
-            let json = JSON(responseObject["stories"]!)
-            for (index: String, subJson: JSON) in json {
-                //Do something you want
-                
+            if let storyArray = responseObject["stories"] {
+                for story in storyArray as! Array<Any> {
+                    let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
+                    print(storyModel.title)
+                }
             }
+            
         }) { (error) in
             print("失败")
         }
