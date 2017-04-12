@@ -8,9 +8,21 @@
 
 import UIKit
 
-class StoryModel: NSObject {
+class StoryModel: NSObject, NSCoding {
     var title = ""
     var images: [String] = []
     var id = ""
     
+    override init() {}
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.title, forKey: "title")
+        aCoder.encode(self.images, forKey: "images")
+        aCoder.encode(self.id, forKey: "id")
+    }
+    required init?(coder aDecoder: NSCoder) {
+        self.title = aDecoder.decodeObject(forKey: "title") as! String
+        self.images = aDecoder.decodeObject(forKey: "images") as! [String]
+        self.id = aDecoder.decodeObject(forKey: "id") as! String
+    }
 }

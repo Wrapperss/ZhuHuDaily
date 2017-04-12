@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 import MJExtension
-import SwiftyJSON
+import YYCache
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoryRotateViewDelegate {
 
@@ -51,6 +51,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setHeadView() -> Void {
+        if (YYCache.init(name: "TopStoriesCache")?.object(forKey: "topStories")) != nil {
+            self.topStoryArray = YYCache.init(name: "TopStoriesCache")?.object(forKey: "topStories") as! [TopStoryModel]
+        }
         headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
         headView.delegate = self
         self.tableView.tableHeaderView = headView
@@ -71,6 +74,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - LoadStory
     func loadStory() -> Void {
+        let topStoriesCache = YYCache.init(name: "TopStoriesCache")
+        let stotriesCache = YYCache.init(name: "stotriesCache")
+        
         NetworkTool.shared.loadDateInfo(urlString: LATEST_STORY_API, params: ["":""], success: { (responseObject) in
             
             //最新故事
@@ -80,7 +86,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.storyArray.append(storyModel)
                 }
             }
-            
+            stotriesCache?.setObject(self.storyArray as NSCoding, forKey: String(describing: Date.init()))
             //封面故事
             for topStory in responseObject["top_stories"] as! Array<Any> {
                 let topStoryModel: TopStoryModel = TopStoryModel.mj_object(withKeyValues: topStory)
@@ -89,6 +95,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             self.headView.upDateView(self.topStoryArray)
+            topStoriesCache?.setObject(self.topStoryArray as NSCoding, forKey: "topStories")
             self.tableView.reloadData()
         }) { (error) in
             print("失败")
@@ -102,6 +109,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.storyArray.count == 0 {
+            if (YYCache.init(name: "stotriesCache")?.containsObject(forKey: String(describing: Date.init())))! {
+                storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
+            }
+            if self.storyArray.count == 0 {
+                return 10
+            }
+        }
         return self.storyArray.count
     }
 
@@ -110,7 +125,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let identifier = "storyCell"
         let cell: StoryViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! StoryViewCell
-        cell.setMessage(self.storyArray[indexPath.row])
+        if storyArray.count == 0 {
+            storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
+            if storyArray.count == 0 {
+                cell.pictureView?.image = UIImage.init(named: "default_image")
+                cell.titleLabel.text = "知乎日报"
+                cell.mutilPicture.isHidden = true
+            }
+        }
+        else {
+            cell.setMessage(self.storyArray[indexPath.row])
+        }
         
         return cell
     }
@@ -119,4 +144,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 80
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let edg = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
+        cell.separatorInset = edg
+    }
 }

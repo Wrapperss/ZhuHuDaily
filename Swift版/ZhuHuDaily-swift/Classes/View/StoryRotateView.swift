@@ -12,6 +12,7 @@ import Masonry
 protocol StoryRotateViewDelegate {
     func clickOneView(currentPage: Int) -> Void
 }
+
 class StoryRotateView: UIView, UIScrollViewDelegate{
     var scrollView = UIScrollView()
     var pageControl = UIPageControl()
@@ -75,9 +76,9 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
             titleLabel.textColor = UIColor.white
             imageView.addSubview(titleLabel)
             titleLabel.mas_makeConstraints({ (make) in
-                make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-                make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-                make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
+                make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0))
+                make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 10))
+                make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 25, right: 0))
             })
         }
     }
@@ -91,7 +92,7 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
         self.addSubview(pageControl)
         pageControl.mas_makeConstraints { (make) in
             make?.centerX.equalTo()(self.mas_centerX)
-            make?.bottom.equalTo()(self.mas_bottom)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 3, right: 0))
+            make?.bottom.equalTo()(self.mas_bottom)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -5, right: 0))
         }
     }
     
@@ -120,6 +121,8 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
         }
     }
     
+    
+    // MARK - StoryRotateViewDelegate
     func clickStoryRotateView() -> Void {
         delegate?.clickOneView(currentPage: currentPage)
     }
