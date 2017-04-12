@@ -11,7 +11,7 @@ import MJRefresh
 import MJExtension
 import SwiftyJSON
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoryRotateViewDelegate {
 
     var tableView = UITableView()
     var headView = StoryRotateView()
@@ -52,7 +52,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func setHeadView() -> Void {
         headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
+        headView.delegate = self
         self.tableView.tableHeaderView = headView
+    }
+    
+    func clickOneView(currentPage: Int) -> Void {
+        
+        print("点击了\(currentPage)")
     }
     
     // MARK: - Refresh

@@ -9,12 +9,16 @@
 import UIKit
 import Masonry
 
+protocol StoryRotateViewDelegate {
+    func clickOneView(currentPage: Int) -> Void
+}
 class StoryRotateView: UIView, UIScrollViewDelegate{
     var scrollView = UIScrollView()
     var pageControl = UIPageControl()
     let pageCount = 5
     var timer: Timer?
     var currentPage = Int()
+    var delegate: StoryRotateViewDelegate?
     
     // MARK - UI
     func setStoryRotateView(topStoryArray: [TopStoryModel], heigit: CGFloat) -> Void {
@@ -27,86 +31,8 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
     
     // MARK - ScrollView
     private func setUpScrollView(_ topStoryArray: [TopStoryModel], height: CGFloat) -> Void {
-        if topStoryArray.count == 0 {
-            for i in 0...pageCount-1 {
-                
-                //imageView
-                let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(i) * APP_WIDTH, y: 0, width: APP_WIDTH, height: height))
-                imageView.image = UIImage.init(named: "default_image")
-                scrollView.addSubview(imageView)
-                
-                //label
-                let titleLabel = UILabel.init()
-                titleLabel.text = ""
-                titleLabel.font = UIFont.systemFont(ofSize: 20)
-                titleLabel.numberOfLines = 2
-                titleLabel.textColor = UIColor.white
-                imageView.addSubview(titleLabel)
-                titleLabel.mas_makeConstraints({ (make) in
-                    make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-                    make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-                    make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
-                })
-            }
-            //imageView
-            let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(pageCount) * APP_WIDTH, y: 0, width: APP_WIDTH, height: height))
-            imageView.image = UIImage.init(named: "default_image")
-            self.scrollView.addSubview(imageView)
-            
-            //label
-            let titleLabel = UILabel.init()
-            titleLabel.text = ""
-            titleLabel.font = UIFont.systemFont(ofSize: 20)
-            titleLabel.numberOfLines = 2
-            titleLabel.textColor = UIColor.white
-            imageView.addSubview(titleLabel)
-            titleLabel.mas_makeConstraints({ (make) in
-                make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-                make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-                make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
-            })
-        }
-        else {
-            for i in 0...pageCount-1 {
-                //imageView
-                let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(i) * APP_WIDTH, y: 0, width: APP_WIDTH, height: height))
-                
-                imageView.sd_setImage(with: URL.init(string: topStoryArray[i].image), placeholderImage: UIImage.init(named: "default_image"))
-                scrollView.addSubview(imageView)
-                
-                //Label
-                let titleLabel = UILabel.init()
-                titleLabel.text = topStoryArray[i].title
-                titleLabel.font = UIFont.systemFont(ofSize: 20)
-                titleLabel.numberOfLines = 2
-                titleLabel.textColor = UIColor.white
-                imageView.addSubview(titleLabel)
-                titleLabel.mas_makeConstraints({ (make) in
-                    make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-                    make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-                    make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
-                })
-
-             }
-            //imageView
-            let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(pageCount) * APP_WIDTH, y: 0, width: APP_WIDTH, height: height))
-            imageView.sd_setImage(with: URL.init(string: topStoryArray[0].image), placeholderImage: UIImage.init(named: "default_image"))
-            self.scrollView.addSubview(imageView)
-            
-            //label
-            let titleLabel = UILabel.init()
-            titleLabel.text = ""
-            titleLabel.font = UIFont.systemFont(ofSize: 20)
-            titleLabel.numberOfLines = 2
-            titleLabel.textColor = UIColor.white
-            imageView.addSubview(titleLabel)
-            titleLabel.mas_makeConstraints({ (make) in
-                make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-                make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-                make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
-            })
-            
-        }
+        
+        addALLPage(topStoryArray: topStoryArray, height: height)
         
         scrollView.frame = self.bounds
         scrollView.contentSize = CGSize.init(width: CGFloat(pageCount + 1) * APP_WIDTH, height: height)
@@ -115,6 +41,45 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         self.addSubview(scrollView)
+        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(self.clickStoryRotateView))
+        scrollView.addGestureRecognizer(tap)
+    }
+    
+    // 添加轮播图
+    private func addALLPage( topStoryArray: [TopStoryModel], height: CGFloat   ) -> Void {
+        for index in 0...pageCount {
+            //imageView
+            let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(index) * APP_WIDTH, y: 0, width: APP_WIDTH, height: height))
+            //label
+            let titleLabel = UILabel.init()
+
+            if topStoryArray.count == 0 {
+                imageView.image = UIImage.init(named: "default_image")
+                titleLabel.text = ""
+            }
+            else {
+                if index == pageCount {
+                    imageView.sd_setImage(with: URL.init(string: topStoryArray[0].image), placeholderImage: UIImage.init(named: "default_image"))
+                    titleLabel.text = topStoryArray[0].title
+                }
+                else {
+                    imageView.sd_setImage(with: URL.init(string: topStoryArray[index].image), placeholderImage: UIImage.init(named: "default_image"))
+                    titleLabel.text = topStoryArray[index].title
+                }
+            }
+            scrollView.addSubview(imageView)
+            
+            titleLabel.font = UIFont.systemFont(ofSize: 20)
+            titleLabel.numberOfLines = 2
+            titleLabel.textColor = UIColor.white
+            imageView.addSubview(titleLabel)
+            titleLabel.mas_makeConstraints({ (make) in
+                make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
+                make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
+                make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
+            })
+        }
     }
     
     // MARK - pageControl
@@ -155,53 +120,22 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
         }
     }
     
+    func clickStoryRotateView() -> Void {
+        delegate?.clickOneView(currentPage: currentPage)
+    }
+    
     // MARK - 更新信息
     func upDateView(_ topStoryArray: [TopStoryModel]) -> Void {
         for item in self.scrollView.subviews {
             item.removeFromSuperview()
         }
-        for i in 0...pageCount-1 {
-            //imageView
-            let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(i) * APP_WIDTH, y: 0, width: APP_WIDTH, height: self.scrollView.bounds.height))
-            
-            imageView.sd_setImage(with: URL.init(string: topStoryArray[i].image), placeholderImage: UIImage.init(named: "default_image"))
-            scrollView.addSubview(imageView)
-            
-            //label
-            let titleLabel = UILabel.init()
-            titleLabel.text = topStoryArray[i].title
-            titleLabel.font = UIFont.systemFont(ofSize: 20)
-            titleLabel.numberOfLines = 2
-            titleLabel.textColor = UIColor.white
-            imageView.addSubview(titleLabel)
-            titleLabel.mas_makeConstraints({ (make) in
-                make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-                make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-                make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
-            })
-        }
-        //imageView
-        let imageView = UIImageView.init(frame: CGRect.init(x: CGFloat(pageCount) * APP_WIDTH, y: 0, width: APP_WIDTH, height: self.scrollView.bounds.height))
-        imageView.sd_setImage(with: URL.init(string: topStoryArray[0].image), placeholderImage: UIImage.init(named: "default_image"))
-        self.scrollView.addSubview(imageView)
-        
-        //label
-        let titleLabel = UILabel.init()
-        titleLabel.text = topStoryArray[0].title
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.numberOfLines = 2
-        titleLabel.textColor = UIColor.white
-        imageView.addSubview(titleLabel)
-        titleLabel.mas_makeConstraints({ (make) in
-            make?.left.equalTo()(imageView.mas_left)?.with().insets()(UIEdgeInsets.init(top: 0, left: -10, bottom: 0, right: 0))
-            make?.right.equalTo()(imageView.mas_right)?.with().insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: -10))
-            make?.bottom.equalTo()(imageView.mas_bottom)?.insets()(UIEdgeInsets.init(top: 0, left: 0, bottom: -10, right: 0))
-        })
+        addALLPage(topStoryArray: topStoryArray, height: self.scrollView.bounds.size.height)
     }
     
     // MARK - UIScrollViewDelegate
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.currentPage = Int(self.scrollView.contentOffset.x / APP_WIDTH)
+        pageControl.currentPage = currentPage;
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
