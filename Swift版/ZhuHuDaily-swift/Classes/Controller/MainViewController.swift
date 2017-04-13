@@ -10,6 +10,7 @@ import UIKit
 import MJRefresh
 import MJExtension
 import YYCache
+import SVProgressHUD
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoryRotateViewDelegate {
 
@@ -17,7 +18,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var headView = StoryRotateView()
     
     var storyArray = [StoryModel]()
+    var beforeStoryArray = [StoryModel]()
     var topStoryArray = [TopStoryModel]()
+    var date = Date()
     
     
     override func viewDidLoad() {
@@ -64,49 +67,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("点击了\(currentPage)")
     }
     
-    // MARK: - Refresh
-    func setRefresh() -> Void {
-        self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
-            self.loadStory()
-            self.tableView.mj_header.endRefreshing()
-        })
-    }
-    
-    // MARK: - LoadStory
-    func loadStory() -> Void {
-        NetworkTool.shared.loadDateInfo(urlString: LATEST_STORY_API, params: ["":""], success: { (responseObject) in
-            
-            //最新故事
-            var currentStoryArray = [StoryModel]()
-            for story in responseObject["stories"] as! Array<Any> {
-                let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
-                if !self.storyArray.contains(storyModel) {
-                    //UI
-                    self.storyArray.append(storyModel)
-                    //Cache
-                    currentStoryArray.append(storyModel)
-                }
-            }
-            CacheTool.shared.setStoryCacheBy(ketDate: Date(), AndObject: currentStoryArray)
-            
-            //封面故事
-            for topStory in responseObject["top_stories"] as! Array<Any> {
-                let topStoryModel: TopStoryModel = TopStoryModel.mj_object(withKeyValues: topStory)
-                if !self.topStoryArray.contains(topStoryModel) {
-                    //UI
-                    //Cache
-                    self.topStoryArray.append(topStoryModel)
-                }
-            }
-            CacheTool.shared.setTopStory(self.topStoryArray)
-            self.headView.upDateView(self.topStoryArray)
-            self.tableView.reloadData()
-        }) { (error) in
-            print("失败")
-        }
-    }
-    
-    
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -129,27 +89,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let identifier = "storyCell"
         let cell: StoryViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! StoryViewCell
-//        if storyArray.count == 0 {
-//            if (YYCache.init(name: "stotriesCache")?.containsObject(forKey: String(describing: NSDate())))! {
-//                storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
-//            }
-//            if storyArray.count == 0 {
-//                cell.pictureView?.image = UIImage.init(named: "default_image")
-//                cell.titleLabel.text = "知乎日报"
-//                cell.mutilPicture.isHidden = true
-//            }
-//        }
-//        else {
-//            cell.setMessage(self.storyArray[indexPath.row])
-//        }
-        cell.pictureView?.image = UIImage.init(named: "default_image")
-        cell.titleLabel.text = "知乎日报"
-        cell.mutilPicture.isHidden = true
+        if indexPath.section == 0 {
+            if storyArray.count == 0 {
+                if (CacheTool.shared.getStoryCacheBy(keyDate: Date())) != nil {
+                    self.storyArray = CacheTool.shared.getStoryCacheBy(keyDate: Date())!
+                }
+                else {
+                    cell.pictureView?.image = UIImage.init(named: "default_image")
+                    cell.titleLabel.text = "知乎日报"
+                    cell.mutilPicture.isHidden = true
+                    return cell
+                }
+            }
+            cell.pictureView.sd_setImage(with: URL.init(string: storyArray[indexPath.row].images[0]), placeholderImage: UIImage.init(named: "default_image"))
+            cell.titleLabel.text = storyArray[indexPath.row].title
+            cell.mutilPicture.isHidden = storyArray[indexPath.row].images.count == 1 ? true : false
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        }
+        return 30
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

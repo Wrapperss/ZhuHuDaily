@@ -18,11 +18,12 @@
 		9FB12C121E95CC2B004812BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB12C101E95CC2B004812BB /* Main.storyboard */; };
 		9FB12C141E95CC2B004812BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FB12C131E95CC2B004812BB /* Assets.xcassets */; };
 		9FB12C171E95CC2B004812BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB12C151E95CC2B004812BB /* LaunchScreen.storyboard */; };
+		9FD219F51E9F4D4800E6A119 /* Extension-MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD219F41E9F4D4800E6A119 /* Extension-MainViewController.swift */; };
 		9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD9C7171E976C150040821A /* StoryViewCell.swift */; };
 		9FD9C71A1E976C150040821A /* StoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD9C7181E976C150040821A /* StoryViewCell.xib */; };
 		9FE3F20B1E9F021600CC68FE /* CacheTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20A1E9F021600CC68FE /* CacheTool.swift */; };
 		9FE3F20D1E9F057700CC68FE /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20C1E9F057700CC68FE /* DateTool.swift */; };
-		9FE3F20F1E9F0BC500CC68FE /* Date-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20E1E9F0BC500CC68FE /* Date-Extension.swift */; };
+		9FE3F20F1E9F0BC500CC68FE /* Extension-Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20E1E9F0BC500CC68FE /* Extension-Date.swift */; };
 		9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645C91E95CE49005672D2 /* MainViewController.swift */; };
 		9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645CB1E95D3AF005672D2 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
@@ -42,11 +43,12 @@
 		9FB12C131E95CC2B004812BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FB12C161E95CC2B004812BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FB12C181E95CC2B004812BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FD219F41E9F4D4800E6A119 /* Extension-MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension-MainViewController.swift"; sourceTree = "<group>"; };
 		9FD9C7171E976C150040821A /* StoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewCell.swift; sourceTree = "<group>"; };
 		9FD9C7181E976C150040821A /* StoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryViewCell.xib; sourceTree = "<group>"; };
 		9FE3F20A1E9F021600CC68FE /* CacheTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTool.swift; sourceTree = "<group>"; };
 		9FE3F20C1E9F057700CC68FE /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
-		9FE3F20E1E9F0BC500CC68FE /* Date-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date-Extension.swift"; sourceTree = "<group>"; };
+		9FE3F20E1E9F0BC500CC68FE /* Extension-Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension-Date.swift"; sourceTree = "<group>"; };
 		9FE645C91E95CE49005672D2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9FE645CB1E95D3AF005672D2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9FE645CF1E95DF0D005672D2 /* ZhuHuDaily-Brdging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZhuHuDaily-Brdging-Header.h"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				9FE645C91E95CE49005672D2 /* MainViewController.swift */,
 				9FE645CB1E95D3AF005672D2 /* NavigationController.swift */,
+				9FD219F41E9F4D4800E6A119 /* Extension-MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -162,7 +165,7 @@
 				9FE645CF1E95DF0D005672D2 /* ZhuHuDaily-Brdging-Header.h */,
 				9FE3F20A1E9F021600CC68FE /* CacheTool.swift */,
 				9FE3F20C1E9F057700CC68FE /* DateTool.swift */,
-				9FE3F20E1E9F0BC500CC68FE /* Date-Extension.swift */,
+				9FE3F20E1E9F0BC500CC68FE /* Extension-Date.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -301,9 +304,10 @@
 				9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */,
 				9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */,
 				9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */,
+				9FD219F51E9F4D4800E6A119 /* Extension-MainViewController.swift in Sources */,
 				9FE3F20B1E9F021600CC68FE /* CacheTool.swift in Sources */,
 				9F4DC0B41E9B375A00200192 /* StoryModel.swift in Sources */,
-				9FE3F20F1E9F0BC500CC68FE /* Date-Extension.swift in Sources */,
+				9FE3F20F1E9F0BC500CC68FE /* Extension-Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,6 +41,7 @@ class CacheTool {
     
     // set
     func setTopStory(_ topStoryArray: [TopStoryModel]) -> Void {
+        storyCache?.removeObject(forKey: "topStory")
         storyCache?.setObject(topStoryArray as NSCoding, forKey: "topStory")
     }
     

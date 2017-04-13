@@ -8,13 +8,16 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
+import SVProgressHUD
 
 class NetworkTool {
     
     //单例
     static let shared = NetworkTool()
-    private init(){}
+    private init() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.setMinimumDismissTimeInterval(1.0)
+    }
     
     
     //GET

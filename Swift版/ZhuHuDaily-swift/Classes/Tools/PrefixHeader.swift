@@ -22,3 +22,6 @@ let ZHI_HU_COLOR = UIColor.init(red: 0/255.0, green: 175/255.0, blue: 240/255.0,
 let NAVBAR_CHANGE_POINT = 50
 //最新的故事Api
 let LATEST_STORY_API = "http://news-at.zhihu.com/api/4/news/latest"
+//之前的故事Api
+let BeEFORE_STORY_API = "http://news-at.zhihu.com/api/4/news/before/"
+

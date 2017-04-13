@@ -23,4 +23,11 @@ class DateTool {
         
         return formatter.string(from:)(date).appending(week)
     }
+    
+    func transfromDateToApi(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYYMMdd"
+        return formatter.string(from:)(date)
+        
+    }
 }

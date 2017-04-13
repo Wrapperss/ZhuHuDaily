@@ -1,0 +1,71 @@
+//
+//  Extension-MainViewController.swift
+//  ZhuHuDaily-swift
+//
+//  Created by Wrappers Zhang on 2017/4/13.
+//  Copyright © 2017年 Wrappers. All rights reserved.
+//
+
+import UIKit
+import MJRefresh
+import SVProgressHUD
+
+extension MainViewController {
+    
+    // MARK: - Refresh
+    func setRefresh() -> Void {
+        self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
+            self.loadStory()
+            self.tableView.mj_header.endRefreshing()
+        })
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
+            self.loadMoreStory()
+            self.tableView.mj_footer.endRefreshing()
+        })
+    }
+    
+    // MARK: - LoadStory
+    func loadStory() -> Void {
+        NetworkTool.shared.loadDateInfo(urlString: LATEST_STORY_API, params: ["":""], success: { (responseObject) in
+            
+            //最新故事
+            var currentStoryArray = [StoryModel]()
+            self.storyArray.removeAll()
+            for story in responseObject["stories"] as! Array<Any> {
+                let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
+                //UI
+                self.storyArray.append(storyModel)
+                //Cache
+                currentStoryArray.append(storyModel)
+                
+            }
+            CacheTool.shared.setStoryCacheBy(ketDate: Date(), AndObject: currentStoryArray)
+            
+            //封面故事
+            self.topStoryArray.removeAll()
+            for topStory in responseObject["top_stories"] as! Array<Any> {
+                let topStoryModel: TopStoryModel = TopStoryModel.mj_object(withKeyValues: topStory)
+                if !self.topStoryArray.contains(topStoryModel) {
+                    //UI
+                    //Cache
+                    self.topStoryArray.append(topStoryModel)
+                }
+            }
+            CacheTool.shared.setTopStory(self.topStoryArray)
+            self.headView.upDateView(self.topStoryArray)
+            self.tableView.reloadData()
+        }) { (error) in
+            SVProgressHUD.showError(withStatus: "加载失败")
+        }
+    }
+    
+    func loadMoreStory() -> Void {
+        print(DateTool.shared.transfromDateToApi(self.date))
+        NetworkTool.shared.loadDateInfo(urlString: BeEFORE_STORY_API.appending(DateTool.shared.transfromDateToApi(self.date)), params: ["":""], success: { (responseObject) in
+            print(responseObject)
+        }) { (error) in
+            
+        }
+    }
+
+}
