@@ -51,8 +51,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setHeadView() -> Void {
-        if (YYCache.init(name: "TopStoriesCache")?.object(forKey: "topStories")) != nil {
-            self.topStoryArray = YYCache.init(name: "TopStoriesCache")?.object(forKey: "topStories") as! [TopStoryModel]
+        if (CacheTool.shared.getTopStory()) != nil {
+            self.topStoryArray = CacheTool.shared.getTopStory()!
         }
         headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
         headView.delegate = self
@@ -74,28 +74,32 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - LoadStory
     func loadStory() -> Void {
-        let topStoriesCache = YYCache.init(name: "TopStoriesCache")
-        let stotriesCache = YYCache.init(name: "stotriesCache")
-        
         NetworkTool.shared.loadDateInfo(urlString: LATEST_STORY_API, params: ["":""], success: { (responseObject) in
             
             //最新故事
+            var currentStoryArray = [StoryModel]()
             for story in responseObject["stories"] as! Array<Any> {
                 let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
                 if !self.storyArray.contains(storyModel) {
+                    //UI
                     self.storyArray.append(storyModel)
+                    //Cache
+                    currentStoryArray.append(storyModel)
                 }
             }
-            stotriesCache?.setObject(self.storyArray as NSCoding, forKey: String(describing: Date.init()))
+            CacheTool.shared.setStoryCacheBy(ketDate: Date(), AndObject: currentStoryArray)
+            
             //封面故事
             for topStory in responseObject["top_stories"] as! Array<Any> {
                 let topStoryModel: TopStoryModel = TopStoryModel.mj_object(withKeyValues: topStory)
                 if !self.topStoryArray.contains(topStoryModel) {
+                    //UI
+                    //Cache
                     self.topStoryArray.append(topStoryModel)
                 }
             }
+            CacheTool.shared.setTopStory(self.topStoryArray)
             self.headView.upDateView(self.topStoryArray)
-            topStoriesCache?.setObject(self.topStoryArray as NSCoding, forKey: "topStories")
             self.tableView.reloadData()
         }) { (error) in
             print("失败")
@@ -125,18 +129,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let identifier = "storyCell"
         let cell: StoryViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! StoryViewCell
-        if storyArray.count == 0 {
-            storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
-            if storyArray.count == 0 {
-                cell.pictureView?.image = UIImage.init(named: "default_image")
-                cell.titleLabel.text = "知乎日报"
-                cell.mutilPicture.isHidden = true
-            }
-        }
-        else {
-            cell.setMessage(self.storyArray[indexPath.row])
-        }
-        
+//        if storyArray.count == 0 {
+//            if (YYCache.init(name: "stotriesCache")?.containsObject(forKey: String(describing: NSDate())))! {
+//                storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
+//            }
+//            if storyArray.count == 0 {
+//                cell.pictureView?.image = UIImage.init(named: "default_image")
+//                cell.titleLabel.text = "知乎日报"
+//                cell.mutilPicture.isHidden = true
+//            }
+//        }
+//        else {
+//            cell.setMessage(self.storyArray[indexPath.row])
+//        }
+        cell.pictureView?.image = UIImage.init(named: "default_image")
+        cell.titleLabel.text = "知乎日报"
+        cell.mutilPicture.isHidden = true
         return cell
     }
     
