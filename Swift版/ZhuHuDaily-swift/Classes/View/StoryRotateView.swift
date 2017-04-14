@@ -72,6 +72,7 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
             scrollView.addSubview(imageView)
             
             titleLabel.font = UIFont.systemFont(ofSize: 20)
+            titleLabel.font = UIFont.init(name: "Arial Rounded MT Bold", size: 20.0)
             titleLabel.numberOfLines = 2
             titleLabel.textColor = UIColor.white
             imageView.addSubview(titleLabel)
@@ -144,6 +145,7 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.timer?.invalidate()
     }
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.creatTimer()
     }

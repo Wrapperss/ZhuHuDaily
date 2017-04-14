@@ -18,70 +18,67 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var headView = StoryRotateView()
     
     var storyArray = [StoryModel]()
-    var beforeStoryArray = [StoryModel]()
+    var beforeStoryArray = [[StoryModel]]()
     var topStoryArray = [TopStoryModel]()
-    var date = Date()
+    var titleArray = [String]()
     
+    var date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
         self.loadStory()
+        self.loadMoreStory()
+        
         self.setTableView()
         self.setNav()
         self.setRefresh()
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - UI
-    func setNav() -> Void {
-        let dic = [NSForegroundColorAttributeName: UIColor.white]
-        self.navigationController?.navigationBar.titleTextAttributes = dic
-    }
-    
-    func setTableView() -> Void {
-        self.tableView.frame = CGRect.init(x: 0, y: -22, width: APP_WIDTH, height: APP_HEIGHT + 22)
-        self.tableView.register(UINib.init(nibName: "StoryViewCell", bundle: nil), forCellReuseIdentifier: "storyCell")
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.setHeadView()
-        self.view.addSubview(tableView)
-    }
-    
-    func setHeadView() -> Void {
-        if (CacheTool.shared.getTopStory()) != nil {
-            self.topStoryArray = CacheTool.shared.getTopStory()!
-        }
-        headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
-        headView.delegate = self
-        self.tableView.tableHeaderView = headView
-    }
-    
     func clickOneView(currentPage: Int) -> Void {
         
         print("点击了\(currentPage)")
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if self.beforeStoryArray.count == 0 && self.storyArray.count == 0 {
+            return 2;
+        }
+        else {
+            return self.beforeStoryArray.count + 1;
+        }
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.storyArray.count == 0 {
-            if (YYCache.init(name: "stotriesCache")?.containsObject(forKey: String(describing: Date.init())))! {
-                storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
-            }
+        if section == 0{
             if self.storyArray.count == 0 {
-                return 10
+                if (YYCache.init(name: "stotriesCache")?.containsObject(forKey: String(describing: Date.init())))! {
+                    storyArray = (YYCache.init(name: "stotriesCache")?.object(forKey: String(describing: Date.init())))! as! [StoryModel]
+                }
+                if self.storyArray.count == 0 {
+                    return 10
+                }
+            }
+            return self.storyArray.count
+        }
+        else {
+            if self.beforeStoryArray.count == 0 {
+                return 0
+            }
+            else {
+                return self.beforeStoryArray[section-1].count
             }
         }
-        return self.storyArray.count
     }
 
     
@@ -101,9 +98,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     return cell
                 }
             }
-            cell.pictureView.sd_setImage(with: URL.init(string: storyArray[indexPath.row].images[0]), placeholderImage: UIImage.init(named: "default_image"))
-            cell.titleLabel.text = storyArray[indexPath.row].title
-            cell.mutilPicture.isHidden = storyArray[indexPath.row].images.count == 1 ? true : false
+            cell.setMessage(storyArray[indexPath.row])
+        }
+        else {
+            cell.setMessage(self.beforeStoryArray[indexPath.section-1][indexPath.row])
         }
         return cell
     }
@@ -116,7 +114,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if section == 0 {
             return 0
         }
-        return 30
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
+        else {
+            let headView = TitleView()
+            headView.setMessage(title: self.titleArray[section - 1])
+            return headView
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

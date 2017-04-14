@@ -55,17 +55,47 @@ extension MainViewController {
             self.headView.upDateView(self.topStoryArray)
             self.tableView.reloadData()
         }) { (error) in
-            SVProgressHUD.showError(withStatus: "加载失败")
+            if CacheTool.shared.getStoryCacheBy(keyDate: Date()) != nil {
+                SVProgressHUD.showError(withStatus: "刷新失败!")
+                self.storyArray = CacheTool.shared.getStoryCacheBy(keyDate: Date())!
+                self.topStoryArray = CacheTool.shared.getTopStory()!
+            }
+            else {
+                SVProgressHUD.showError(withStatus: "加载失败!")
+            }
         }
     }
     
+    // MARK - 加载更多消息
     func loadMoreStory() -> Void {
-        print(DateTool.shared.transfromDateToApi(self.date))
-        NetworkTool.shared.loadDateInfo(urlString: BeEFORE_STORY_API.appending(DateTool.shared.transfromDateToApi(self.date)), params: ["":""], success: { (responseObject) in
-            print(responseObject)
-        }) { (error) in
-            
+        if CacheTool.shared.getStoryCacheBy(keyDate: self.date) != nil {
+            self.beforeStoryArray.append(CacheTool.shared.getStoryCacheBy(keyDate: self.date)!)
+            self.setDate()
+            self.tableView.reloadData()
         }
+        else {
+            NetworkTool.shared.loadDateInfo(urlString: BeEFORE_STORY_API.appending(DateTool.shared.transfromDateToApi(self.date)), params: ["":""], success: { (responseObject) in
+                
+                var storyArray = [StoryModel]()
+                for story in responseObject["stories"]  as! Array<Any>{
+                    let storyModel: StoryModel = StoryModel.mj_object(withKeyValues: story)
+                    storyArray.append(storyModel)
+                }
+                
+                self.beforeStoryArray.append(storyArray)
+                CacheTool.shared.setStoryCacheBy(ketDate: self.date, AndObject: storyArray)
+                self.setDate()
+                self.tableView.reloadData()
+            }) { (error) in
+                SVProgressHUD.showError(withStatus: "加载失败")
+            }
+        }
+    }
+    
+    // MARK -  时间前置一天
+    func setDate() -> Void {
+        self.date = Date.init(timeInterval: -24*60*60, since: date)
+        self.titleArray.append(DateTool.shared.transfromDate(self.date))
     }
 
 }

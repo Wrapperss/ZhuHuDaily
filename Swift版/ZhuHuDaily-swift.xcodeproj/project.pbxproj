@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C3FAF66950B64102B61D551 /* Pods_ZhuHuDaily_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0848B6FAA15C25A5C7DA6881 /* Pods_ZhuHuDaily_swift.framework */; };
+		9F0A48411EA09C05003ADE72 /* UI-MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */; };
+		9F0A48451EA0AA8C003ADE72 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A48441EA0AA8C003ADE72 /* TitleView.swift */; };
 		9F2A30D91E9613F3006A8880 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2A30D81E9613F3006A8880 /* NetworkTool.swift */; };
 		9F4DC0B41E9B375A00200192 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DC0B31E9B375A00200192 /* StoryModel.swift */; };
 		9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5004841E9CF89100F73873 /* TopStoryModel.swift */; };
@@ -18,7 +20,7 @@
 		9FB12C121E95CC2B004812BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB12C101E95CC2B004812BB /* Main.storyboard */; };
 		9FB12C141E95CC2B004812BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FB12C131E95CC2B004812BB /* Assets.xcassets */; };
 		9FB12C171E95CC2B004812BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB12C151E95CC2B004812BB /* LaunchScreen.storyboard */; };
-		9FD219F51E9F4D4800E6A119 /* Extension-MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD219F41E9F4D4800E6A119 /* Extension-MainViewController.swift */; };
+		9FD219F51E9F4D4800E6A119 /* LoadStory-MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD219F41E9F4D4800E6A119 /* LoadStory-MainViewController.swift */; };
 		9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD9C7171E976C150040821A /* StoryViewCell.swift */; };
 		9FD9C71A1E976C150040821A /* StoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FD9C7181E976C150040821A /* StoryViewCell.xib */; };
 		9FE3F20B1E9F021600CC68FE /* CacheTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20A1E9F021600CC68FE /* CacheTool.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		0848B6FAA15C25A5C7DA6881 /* Pods_ZhuHuDaily_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZhuHuDaily_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8716639D102AC26C687FAE90 /* Pods-ZhuHuDaily-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhuHuDaily-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZhuHuDaily-swift/Pods-ZhuHuDaily-swift.release.xcconfig"; sourceTree = "<group>"; };
+		9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UI-MainViewController.swift"; sourceTree = "<group>"; };
+		9F0A48441EA0AA8C003ADE72 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		9F2A30D81E9613F3006A8880 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		9F4DC0B31E9B375A00200192 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		9F5004841E9CF89100F73873 /* TopStoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopStoryModel.swift; sourceTree = "<group>"; };
@@ -43,7 +47,7 @@
 		9FB12C131E95CC2B004812BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FB12C161E95CC2B004812BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FB12C181E95CC2B004812BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FD219F41E9F4D4800E6A119 /* Extension-MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension-MainViewController.swift"; sourceTree = "<group>"; };
+		9FD219F41E9F4D4800E6A119 /* LoadStory-MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadStory-MainViewController.swift"; sourceTree = "<group>"; };
 		9FD9C7171E976C150040821A /* StoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewCell.swift; sourceTree = "<group>"; };
 		9FD9C7181E976C150040821A /* StoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryViewCell.xib; sourceTree = "<group>"; };
 		9FE3F20A1E9F021600CC68FE /* CacheTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTool.swift; sourceTree = "<group>"; };
@@ -133,7 +137,8 @@
 			children = (
 				9FE645C91E95CE49005672D2 /* MainViewController.swift */,
 				9FE645CB1E95D3AF005672D2 /* NavigationController.swift */,
-				9FD219F41E9F4D4800E6A119 /* Extension-MainViewController.swift */,
+				9FD219F41E9F4D4800E6A119 /* LoadStory-MainViewController.swift */,
+				9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				9FD9C7171E976C150040821A /* StoryViewCell.swift */,
 				9FD9C7181E976C150040821A /* StoryViewCell.xib */,
 				9F5004861E9CF99800F73873 /* StoryRotateView.swift */,
+				9F0A48441EA0AA8C003ADE72 /* TitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,16 +304,18 @@
 				9F5004871E9CF99800F73873 /* StoryRotateView.swift in Sources */,
 				9FE3F20D1E9F057700CC68FE /* DateTool.swift in Sources */,
 				9F2A30D91E9613F3006A8880 /* NetworkTool.swift in Sources */,
+				9F0A48411EA09C05003ADE72 /* UI-MainViewController.swift in Sources */,
 				9F5ABFE41E95E4640063C8F8 /* PrefixHeader.swift in Sources */,
 				9FB12C0D1E95CC2B004812BB /* AppDelegate.swift in Sources */,
 				9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */,
 				9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */,
 				9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */,
 				9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */,
-				9FD219F51E9F4D4800E6A119 /* Extension-MainViewController.swift in Sources */,
+				9FD219F51E9F4D4800E6A119 /* LoadStory-MainViewController.swift in Sources */,
 				9FE3F20B1E9F021600CC68FE /* CacheTool.swift in Sources */,
 				9F4DC0B41E9B375A00200192 /* StoryModel.swift in Sources */,
 				9FE3F20F1E9F0BC500CC68FE /* Extension-Date.swift in Sources */,
+				9F0A48451EA0AA8C003ADE72 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
