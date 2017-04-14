@@ -1,5 +1,5 @@
 //
-//  titelView.swift
+//  TitleView.swift
 //  ZhuHuDaily-swift
 //
 //  Created by Wrappers Zhang on 2017/4/14.
@@ -8,18 +8,20 @@
 
 import UIKit
 
-class titelView: UIView {
-    
+class TitleView: UIView {
+
     var titleLabel = UILabel()
     
-    func setTitleView(title: String) -> Void {
+    func setMessage(title: String) -> Void {
         self.frame = CGRect.init(x: 0, y: 0, width: APP_WIDTH, height: 44)
-        self.ad
+        self.backgroundColor = ZHI_HU_COLOR
+        self.addTitleLabel(title)
     }
     
-    func addTitleLabel(title: String) -> Void {
+    private func addTitleLabel(_ title: String) -> Void {
         titleLabel.text = title
-        titleLabel.font = UIFont.systemFont(ofSize: 15)
+        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.textColor = UIColor.white
         self.addSubview(titleLabel)
         titleLabel.mas_makeConstraints { (make) in
             make?.centerX.equalTo()(self.mas_centerX)
