@@ -14,10 +14,10 @@ extension MainViewController {
     
     // MARK: - Refresh
     func setRefresh() -> Void {
-        self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
-            self.loadStory()
-            self.tableView.mj_header.endRefreshing()
-        })
+//        self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
+//            self.loadStory()
+//            self.tableView.mj_header.endRefreshing()
+//        })
         self.tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
             self.loadMoreStory()
             self.tableView.mj_footer.endRefreshing()
