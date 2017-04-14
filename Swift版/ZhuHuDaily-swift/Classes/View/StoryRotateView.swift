@@ -73,8 +73,6 @@ class StoryRotateView: UIView, UIScrollViewDelegate{
             
             titleLabel.font = UIFont.systemFont(ofSize: 20)
             titleLabel.font = UIFont.init(name: "Arial Rounded MT Bold", size: 20.0)
-            titleLabel.shadowColor = UIColor.black
-            titleLabel.shadowOffset = CGSize.init(width: 1.0, height: 1.0)
             titleLabel.numberOfLines = 2
             titleLabel.textColor = UIColor.white
             imageView.addSubview(titleLabel)

@@ -22,17 +22,7 @@ extension MainViewController {
         self.tableView.register(UINib.init(nibName: "StoryViewCell", bundle: nil), forCellReuseIdentifier: "storyCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        //self.setHeadView()
-        
-        self.tableView.contentInset = UIEdgeInsetsMake(APP_HEIGHT * 0.3, 0, 0, 0);
-        if (CacheTool.shared.getTopStory()) != nil {
-            self.topStoryArray = CacheTool.shared.getTopStory()!
-        }
-        headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
-        headView.delegate = self
-        headView.frame = CGRect.init(x: 0, y: -APP_WIDTH * 0.3, width: APP_WIDTH, height: APP_HEIGHT)
-        headView.contentMode = UIViewContentMode.scaleAspectFill
-        self.tableView.addSubview(headView)
+        self.setHeadView()
         self.view.addSubview(tableView)
     }
     
