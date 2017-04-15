@@ -28,6 +28,7 @@
 		9FE3F20F1E9F0BC500CC68FE /* Extension-Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20E1E9F0BC500CC68FE /* Extension-Date.swift */; };
 		9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645C91E95CE49005672D2 /* MainViewController.swift */; };
 		9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645CB1E95D3AF005672D2 /* NavigationController.swift */; };
+		9FED72591EA1EA2E004968CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FED72581EA1EA2E004968CD /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		9FE645C91E95CE49005672D2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9FE645CB1E95D3AF005672D2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9FE645CF1E95DF0D005672D2 /* ZhuHuDaily-Brdging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZhuHuDaily-Brdging-Header.h"; sourceTree = "<group>"; };
+		9FED72581EA1EA2E004968CD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AD8988D0635BB445F6F33984 /* Pods-ZhuHuDaily-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhuHuDaily-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZhuHuDaily-swift/Pods-ZhuHuDaily-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 				9FE645CB1E95D3AF005672D2 /* NavigationController.swift */,
 				9FD219F41E9F4D4800E6A119 /* LoadStory-MainViewController.swift */,
 				9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */,
+				9FED72581EA1EA2E004968CD /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				9F5ABFE41E95E4640063C8F8 /* PrefixHeader.swift in Sources */,
 				9FB12C0D1E95CC2B004812BB /* AppDelegate.swift in Sources */,
 				9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */,
+				9FED72591EA1EA2E004968CD /* DetailViewController.swift in Sources */,
 				9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */,
 				9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */,
 				9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */,

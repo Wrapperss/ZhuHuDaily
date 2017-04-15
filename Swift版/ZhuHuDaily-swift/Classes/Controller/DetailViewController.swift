@@ -1,21 +1,21 @@
 //
-//  NavigationController.swift
+//  DetailViewController.swift
 //  ZhuHuDaily-swift
 //
-//  Created by Wrappers Zhang on 2017/4/6.
+//  Created by Wrappers Zhang on 2017/4/15.
 //  Copyright © 2017年 Wrappers. All rights reserved.
 //
 
 import UIKit
 
-class NavigationController: UINavigationController {
-
-    lazy var tableView = UITableView()
+class DetailViewController: UIViewController {
+    
+    var id = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationBar.barTintColor = ZHI_HU_COLOR
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.red
+        print(id)
     }
 
     override func didReceiveMemoryWarning() {

@@ -30,7 +30,7 @@ extension MainViewController {
         if (CacheTool.shared.getTopStory()) != nil {
             self.topStoryArray = CacheTool.shared.getTopStory()!
         }
-        headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: APP_HEIGHT * 0.3)
+        headView.setStoryRotateView(topStoryArray: self.topStoryArray, heigit: HEAD_VIEW_HEIGHT)
         headView.delegate = self
         self.tableView.tableHeaderView = headView
     }

@@ -36,17 +36,30 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.setRefresh()
         
     }
-
-    func clickOneView(currentPage: Int) -> Void {
-        
-        print("点击了\(currentPage)")
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    //  topView 点击事件
+    func clickOneView(currentPage: Int) -> Void {
+        self.pushDetailViewController(indexPath: nil, currentPage: currentPage)
+    }
+    
+    // 加载新的 Controller
+    func pushDetailViewController(indexPath: IndexPath?, currentPage: Int?) -> Void {
+        let detailVC = DetailViewController()
+        if indexPath == nil {
+            detailVC.id = topStoryArray[currentPage!].id
+        }
+        else {
+            detailVC.id = indexPath?.section == 0 ? storyArray[(indexPath?.row)!].id : beforeStoryArray[(indexPath?.section)! - 1][(indexPath?.row)!].id
+        }
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,7 +127,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if section == 0 {
             return 0
         }
-        return 44
+        return SECTION_VIEW_HEIGHT
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -131,5 +144,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let edg = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
         cell.separatorInset = edg
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.pushDetailViewController(indexPath: indexPath, currentPage: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
