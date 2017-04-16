@@ -53,10 +53,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pushDetailViewController(indexPath: IndexPath?, currentPage: Int?) -> Void {
         let detailVC = DetailViewController()
         if indexPath == nil {
-            detailVC.id = topStoryArray[currentPage!].id
+            detailVC.setMsgForDetail(topStoryArray[currentPage!].id)
         }
         else {
-            detailVC.id = indexPath?.section == 0 ? storyArray[(indexPath?.row)!].id : beforeStoryArray[(indexPath?.section)! - 1][(indexPath?.row)!].id
+            detailVC.setMsgForDetail( indexPath?.section == 0 ? storyArray[(indexPath?.row)!].id : beforeStoryArray[(indexPath?.section)!][(indexPath?.row)!].id )
         }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

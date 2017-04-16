@@ -24,6 +24,8 @@ let NAVBAR_CHANGE_POINT = 50
 let LATEST_STORY_API = "http://news-at.zhihu.com/api/4/news/latest"
 //之前的故事Api
 let BeEFORE_STORY_API = "http://news-at.zhihu.com/api/4/news/before/"
+//故事详情Api
+let STORY_DETAIL_API = "http://news-at.zhihu.com/api/4/news/"
 //headView高度
 let HEAD_VIEW_HEIGHT = APP_HEIGHT * 0.3
 //sectionhead高度

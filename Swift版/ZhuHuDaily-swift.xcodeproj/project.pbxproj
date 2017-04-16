@@ -29,6 +29,7 @@
 		9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645C91E95CE49005672D2 /* MainViewController.swift */; };
 		9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645CB1E95D3AF005672D2 /* NavigationController.swift */; };
 		9FED72591EA1EA2E004968CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FED72581EA1EA2E004968CD /* DetailViewController.swift */; };
+		9FED725B1EA20829004968CD /* StoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FED725A1EA20829004968CD /* StoryDetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		9FE645CB1E95D3AF005672D2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9FE645CF1E95DF0D005672D2 /* ZhuHuDaily-Brdging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZhuHuDaily-Brdging-Header.h"; sourceTree = "<group>"; };
 		9FED72581EA1EA2E004968CD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9FED725A1EA20829004968CD /* StoryDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryDetailModel.swift; sourceTree = "<group>"; };
 		AD8988D0635BB445F6F33984 /* Pods-ZhuHuDaily-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhuHuDaily-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZhuHuDaily-swift/Pods-ZhuHuDaily-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 			children = (
 				9F4DC0B31E9B375A00200192 /* StoryModel.swift */,
 				9F5004841E9CF89100F73873 /* TopStoryModel.swift */,
+				9FED725A1EA20829004968CD /* StoryDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */,
 				9FED72591EA1EA2E004968CD /* DetailViewController.swift in Sources */,
 				9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */,
+				9FED725B1EA20829004968CD /* StoryDetailModel.swift in Sources */,
 				9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */,
 				9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */,
 				9FD219F51E9F4D4800E6A119 /* LoadStory-MainViewController.swift in Sources */,
