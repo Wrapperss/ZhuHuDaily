@@ -41,13 +41,18 @@ class CacheTool {
     
     // set
     func setTopStory(_ topStoryArray: [TopStoryModel]) -> Void {
-        storyCache?.removeObject(forKey: "topStory")
         storyCache?.setObject(topStoryArray as NSCoding, forKey: "topStory")
     }
     
     // MARK - StoryDetailCache
     
     // set
+    func getStoryDetail(id: String) -> StoryDetailModel? {
+        return storyDetailCache?.object(forKey: id) as? StoryDetailModel
+    }
     // get
+    func setStoryDetail(_ storyDetailModel: StoryDetailModel) -> Void {
+        storyDetailCache?.setObject(storyDetailModel, forKey: storyDetailModel.id)
+    }
     
 }

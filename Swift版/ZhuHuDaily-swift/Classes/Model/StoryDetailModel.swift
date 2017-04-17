@@ -12,7 +12,7 @@ class StoryDetailModel: NSObject, NSCoding {
     var id = ""
     var title = ""
     var body = ""
-    var css = ""
+    var css = [String]()
     var imageSource = ""
     var image = ""
     var shareUrl = ""
@@ -42,7 +42,7 @@ class StoryDetailModel: NSObject, NSCoding {
         self.id = aDecoder.decodeObject(forKey: "id") as! String
         self.title = aDecoder.decodeObject(forKey: "title") as! String
         self.body = aDecoder.decodeObject(forKey: "body") as! String
-        self.css = aDecoder.decodeObject(forKey: "css") as! String
+        self.css = aDecoder.decodeObject(forKey: "css") as! Array
         self.image = aDecoder.decodeObject(forKey: "image") as! String
         self.imageSource = aDecoder.decodeObject(forKey: "imageSource") as! String
         self.images = aDecoder.decodeObject(forKey: "iamges") as! Array

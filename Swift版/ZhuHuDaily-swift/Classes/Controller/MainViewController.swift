@@ -56,7 +56,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             detailVC.setMsgForDetail(topStoryArray[currentPage!].id)
         }
         else {
-            detailVC.setMsgForDetail( indexPath?.section == 0 ? storyArray[(indexPath?.row)!].id : beforeStoryArray[(indexPath?.section)!][(indexPath?.row)!].id )
+            detailVC.setMsgForDetail( (indexPath?.section)! == 0 ? storyArray[(indexPath?.row)!].id : (beforeStoryArray[((indexPath?.section)!-1)][(indexPath?.row)!].id) )
+//            if indexPath?.section == 0 {
+//                detailVC.setMsgForDetail(storyArray[(indexPath?.row)!].id)
+//            }
+//            else {
+//                detailVC.setMsgForDetail(beforeStoryArray[((indexPath?.section)!-1)][(indexPath?.row)!].id)
+//            }
         }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
