@@ -13,7 +13,7 @@ extension MainViewController {
     
     // scrollView 已经滑动
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let alpha = tableView.contentOffset.y / ( CGFloat.init(self.storyArray.count) * CGFloat.init(80) )
+        let alpha = tableView.contentOffset.y / HEAD_VIEW_HEIGHT
         
         self.fakeNav.backgroundColor = UIColor.init(red: 0/255.0, green: 175/255.0, blue: 240/255.0, alpha: alpha)
         
