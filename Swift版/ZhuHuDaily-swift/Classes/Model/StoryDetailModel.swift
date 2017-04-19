@@ -45,7 +45,7 @@ class StoryDetailModel: NSObject, NSCoding {
         self.css = aDecoder.decodeObject(forKey: "css") as! Array
         self.image = aDecoder.decodeObject(forKey: "image") as! String
         self.imageSource = aDecoder.decodeObject(forKey: "imageSource") as! String
-        self.images = aDecoder.decodeObject(forKey: "iamges") as! Array
+        self.images = aDecoder.decodeObject(forKey: "images") as! Array
         self.shareUrl = aDecoder.decodeObject(forKey: "shareUrl") as! String
     }
     
