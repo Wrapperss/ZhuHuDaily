@@ -10,13 +10,10 @@ import UIKit
 
 extension MainViewController {
     
-    // MARK: - UI
-    func setNav() -> Void {
-//        let topBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: APP_WIDTH, height: 20))
-//        topBar.backgroundColor = ZHI_HU_COLOR
-//        self.view.addSubview(topBar)
+    // MARK: - UI  
+    func setFakeNav() -> Void {
+        self.view.addSubview(fakeNav)
     }
-    
     func setTableView() -> Void {
         self.tableView.frame = CGRect.init(x: 0, y: -20, width: APP_WIDTH, height: APP_HEIGHT + 20)
         self.tableView.register(UINib.init(nibName: "StoryViewCell", bundle: nil), forCellReuseIdentifier: "storyCell")

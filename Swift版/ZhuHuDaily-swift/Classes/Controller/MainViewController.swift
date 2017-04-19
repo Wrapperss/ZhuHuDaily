@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var tableView = UITableView()
     var headView = StoryRotateView()
+    var fakeNav = FakeNavView.init(title: "")
     
     var storyArray = [StoryModel]()
     var beforeStoryArray = [[StoryModel]]()
@@ -29,10 +30,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.isHidden = true
         
         self.loadStory()
-        self.loadMoreStory()
-        
         self.setTableView()
-        self.setNav()
+        self.setFakeNav()
         self.setRefresh()
         
     }
@@ -53,16 +52,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pushDetailViewController(indexPath: IndexPath?, currentPage: Int?) -> Void {
         let detailVC = DetailViewController()
         if indexPath == nil {
-            detailVC.setMsgForDetail(topStoryArray[currentPage!].id)
+            if topStoryArray.count != 0 {
+                detailVC.setMsgForDetail(topStoryArray[currentPage!].id)
+            }
+            else {
+                return
+            }
         }
         else {
-            detailVC.setMsgForDetail( (indexPath?.section)! == 0 ? storyArray[(indexPath?.row)!].id : (beforeStoryArray[((indexPath?.section)!-1)][(indexPath?.row)!].id) )
-//            if indexPath?.section == 0 {
-//                detailVC.setMsgForDetail(storyArray[(indexPath?.row)!].id)
-//            }
-//            else {
-//                detailVC.setMsgForDetail(beforeStoryArray[((indexPath?.section)!-1)][(indexPath?.row)!].id)
-//            }
+            if self.storyArray.count != 0{
+                detailVC.setMsgForDetail( (indexPath?.section)! == 0 ? storyArray[(indexPath?.row)!].id : (beforeStoryArray[((indexPath?.section)!-1)][(indexPath?.row)!].id) )
+            }
+            else {
+                return
+            }
         }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -105,12 +108,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let identifier = "storyCell"
         let cell: StoryViewCell = tableView.dequeueReusableCell(withIdentifier: identifier) as! StoryViewCell
+        let dateMark = Date.init(timeInterval: 24*60*60, since: Date())
         if indexPath.section == 0 {
             if storyArray.count == 0 {
-                if (CacheTool.shared.getStoryCacheBy(keyDate: Date())) != nil {
-                    self.storyArray = CacheTool.shared.getStoryCacheBy(keyDate: Date())!
+                if CacheTool.shared.containStoryCache(keyDate: dateMark) {
+                    self.storyArray = CacheTool.shared.getStoryCacheBy(keyDate: dateMark)!
                 }
                 else {
+                    //空白的cell
                     cell.pictureView?.image = UIImage.init(named: "default_image")
                     cell.titleLabel.text = "知乎日报"
                     cell.mutilPicture.isHidden = true
@@ -130,10 +135,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0
-        }
-        return SECTION_VIEW_HEIGHT
+        return section == 0 ? 0 : SECTION_VIEW_HEIGHT
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -142,6 +144,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else {
             let headView = TitleView()
+            if self.titleArray.count == 0 {
+                return nil
+            }
             headView.setMessage(title: self.titleArray[section - 1])
             return headView
         }

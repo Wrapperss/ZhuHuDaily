@@ -32,6 +32,13 @@ class CacheTool {
         storyCache?.setObject(object as NSCoding, forKey: key)
     }
     
+    //contain
+    func containStoryCache(keyDate: Date) -> Bool {
+        let key = DateTool.shared.transfromDate(keyDate)
+        return (storyCache?.containsObject(forKey: key))!
+        
+    }
+    
     // MARK - TopStoryCache
     
     // get

@@ -11,6 +11,8 @@
 		9F0A48411EA09C05003ADE72 /* UI-MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */; };
 		9F0A48451EA0AA8C003ADE72 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A48441EA0AA8C003ADE72 /* TitleView.swift */; };
 		9F2A30D91E9613F3006A8880 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2A30D81E9613F3006A8880 /* NetworkTool.swift */; };
+		9F46BF491EA7088C00D0B036 /* FakeNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F46BF481EA7088C00D0B036 /* FakeNavView.swift */; };
+		9F46BF4B1EA7116800D0B036 /* ScrollView+MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F46BF4A1EA7116800D0B036 /* ScrollView+MainViewController.swift */; };
 		9F4DC0B41E9B375A00200192 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DC0B31E9B375A00200192 /* StoryModel.swift */; };
 		9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5004841E9CF89100F73873 /* TopStoryModel.swift */; };
 		9F5004871E9CF99800F73873 /* StoryRotateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5004861E9CF99800F73873 /* StoryRotateView.swift */; };
@@ -27,7 +29,6 @@
 		9FE3F20D1E9F057700CC68FE /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20C1E9F057700CC68FE /* DateTool.swift */; };
 		9FE3F20F1E9F0BC500CC68FE /* Extension-Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3F20E1E9F0BC500CC68FE /* Extension-Date.swift */; };
 		9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645C91E95CE49005672D2 /* MainViewController.swift */; };
-		9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE645CB1E95D3AF005672D2 /* NavigationController.swift */; };
 		9FED72591EA1EA2E004968CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FED72581EA1EA2E004968CD /* DetailViewController.swift */; };
 		9FED725B1EA20829004968CD /* StoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FED725A1EA20829004968CD /* StoryDetailModel.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,8 @@
 		9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UI-MainViewController.swift"; sourceTree = "<group>"; };
 		9F0A48441EA0AA8C003ADE72 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		9F2A30D81E9613F3006A8880 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		9F46BF481EA7088C00D0B036 /* FakeNavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeNavView.swift; sourceTree = "<group>"; };
+		9F46BF4A1EA7116800D0B036 /* ScrollView+MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+MainViewController.swift"; sourceTree = "<group>"; };
 		9F4DC0B31E9B375A00200192 /* StoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		9F5004841E9CF89100F73873 /* TopStoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopStoryModel.swift; sourceTree = "<group>"; };
 		9F5004861E9CF99800F73873 /* StoryRotateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryRotateView.swift; sourceTree = "<group>"; };
@@ -56,7 +59,6 @@
 		9FE3F20C1E9F057700CC68FE /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		9FE3F20E1E9F0BC500CC68FE /* Extension-Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension-Date.swift"; sourceTree = "<group>"; };
 		9FE645C91E95CE49005672D2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9FE645CB1E95D3AF005672D2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9FE645CF1E95DF0D005672D2 /* ZhuHuDaily-Brdging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZhuHuDaily-Brdging-Header.h"; sourceTree = "<group>"; };
 		9FED72581EA1EA2E004968CD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9FED725A1EA20829004968CD /* StoryDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryDetailModel.swift; sourceTree = "<group>"; };
@@ -140,10 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				9FE645C91E95CE49005672D2 /* MainViewController.swift */,
-				9FE645CB1E95D3AF005672D2 /* NavigationController.swift */,
 				9FD219F41E9F4D4800E6A119 /* LoadStory-MainViewController.swift */,
 				9F0A48401EA09C05003ADE72 /* UI-MainViewController.swift */,
 				9FED72581EA1EA2E004968CD /* DetailViewController.swift */,
+				9F46BF4A1EA7116800D0B036 /* ScrollView+MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +167,7 @@
 				9FD9C7181E976C150040821A /* StoryViewCell.xib */,
 				9F5004861E9CF99800F73873 /* StoryRotateView.swift */,
 				9F0A48441EA0AA8C003ADE72 /* TitleView.swift */,
+				9F46BF481EA7088C00D0B036 /* FakeNavView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,15 +315,16 @@
 				9F2A30D91E9613F3006A8880 /* NetworkTool.swift in Sources */,
 				9F0A48411EA09C05003ADE72 /* UI-MainViewController.swift in Sources */,
 				9F5ABFE41E95E4640063C8F8 /* PrefixHeader.swift in Sources */,
+				9F46BF4B1EA7116800D0B036 /* ScrollView+MainViewController.swift in Sources */,
 				9FB12C0D1E95CC2B004812BB /* AppDelegate.swift in Sources */,
 				9F5004851E9CF89100F73873 /* TopStoryModel.swift in Sources */,
 				9FED72591EA1EA2E004968CD /* DetailViewController.swift in Sources */,
 				9FD9C7191E976C150040821A /* StoryViewCell.swift in Sources */,
 				9FED725B1EA20829004968CD /* StoryDetailModel.swift in Sources */,
-				9FE645CC1E95D3AF005672D2 /* NavigationController.swift in Sources */,
 				9FE645CA1E95CE49005672D2 /* MainViewController.swift in Sources */,
 				9FD219F51E9F4D4800E6A119 /* LoadStory-MainViewController.swift in Sources */,
 				9FE3F20B1E9F021600CC68FE /* CacheTool.swift in Sources */,
+				9F46BF491EA7088C00D0B036 /* FakeNavView.swift in Sources */,
 				9F4DC0B41E9B375A00200192 /* StoryModel.swift in Sources */,
 				9FE3F20F1E9F0BC500CC68FE /* Extension-Date.swift in Sources */,
 				9F0A48451EA0AA8C003ADE72 /* TitleView.swift in Sources */,

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainVC = MainViewController()
         mainVC.title = "知乎日报"
         
-        let navVC = NavigationController.init(rootViewController: mainVC)
+        let navVC = UINavigationController.init(rootViewController: mainVC)
         self.window?.rootViewController = navVC
         self.window?.makeKeyAndVisible()
         

@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     
     var detailStoryModel: StoryDetailModel = StoryDetailModel() {
         didSet {
-            self.webView.loadHTMLString(detailStoryModel.body.appending("%@<link rel=\"stylesheet\" type=\"text/css\" href=\"\(detailStoryModel.css[0]))\">"), baseURL: nil)
+            self.webView.loadHTMLString(detailStoryModel.body.appending("<link rel=\"stylesheet\" type=\"text/css\" href=\"\(detailStoryModel.css[0]))\">"), baseURL: nil)
             self.coverView.sd_setImage(with: URL.init(string: detailStoryModel.image), placeholderImage: UIImage.init(named: "default_image"))
         }
     }
