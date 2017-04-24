@@ -15,32 +15,18 @@ extension MainViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let alpha = tableView.contentOffset.y / HEAD_VIEW_HEIGHT
         
-        self.fakeNav.backgroundColor = UIColor.init(red: 0/255.0, green: 175/255.0, blue: 240/255.0, alpha: alpha)
-        
-        if tableView.contentOffset.y > ( CGFloat.init(self.storyArray.count) * CGFloat.init(80) + HEAD_VIEW_HEIGHT ) {
-            
+        self.fakeNav.backgroundColor = UIColor.colorWithZhuHu(alpha: alpha)
+        if alpha > 1 {
+            self.fakeNav.titleLabel.shadowColor = UIColor.clear
+        }
+        else {
+            self.fakeNav.titleLabel.shadowColor = UIColor.lightGray
         }
     }
-    
-//    // scrollView 开始拖动
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDragging")
-//    }
-//    
-//    
-//    // scrollView 结束拖动
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        print("scrollViewDidEndDragging")
-//    }
-//    
-//    // scrollView 开始减速（以下两个方法注意与以上两个方法加以区别）
-//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDecelerating")
-//    }
-//    
-//    // scrollview 减速停止
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        print("scrollViewDidEndDecelerating")
-//    }
-    
+}
+
+extension UIColor {
+    class func colorWithZhuHu(alpha: CGFloat) -> UIColor {
+        return UIColor.init(red: 0/255.0, green: 175/255.0, blue: 240/255.0, alpha: alpha)
+    }
 }
